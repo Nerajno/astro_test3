@@ -6,7 +6,7 @@ import { Astronav, MenuItems, MenuIcon } from "astro-navbar";
 
 const menuitems = [
   {
-    title: "Features",
+    title: "Home",
     path: "#",
     children: [
       { title: "Action", path: "/" },
@@ -15,8 +15,16 @@ const menuitems = [
       { title: "404 Page", path: "/404" },
     ],
   },
+    {
+    title: "Blog",
+    path: "/blog",
+  },
   {
-    title: "Pricing",
+    title: "Portfolio",
+    path: "/pricing",
+  },
+    {
+    title: "Speaking",
     path: "/pricing",
   },
   {
@@ -24,17 +32,13 @@ const menuitems = [
     path: "/about",
   },
   {
-    title: "Blog",
-    path: "/blog",
-  },
-  {
-    title: "Contact",
-    path: "/contact",
-  },
-  {
-    title: "Pro Version",
+    title: "Digital Garden",
     badge: true,
     path: "https://astroship-pro.web3templates.com/",
+  },
+    {
+    title: "Contact",
+    path: "/contact",
   },
 ];
 ---
