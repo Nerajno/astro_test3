@@ -1,6 +1,6 @@
 ---
 import { Picture } from "astro:assets";
-import heroImage from "assets/hero.png";
+import heroImage from "assets/Banner_for_site.png";
 import Link from "@components/ui/link.astro";
 import { Icon } from "astro-icon";
 ---
@@ -10,7 +10,7 @@ import { Icon } from "astro-icon";
   <div class="py-6 md:order-1 hidden md:block">
     <Picture
       src={heroImage}
-      alt="Astronaut in the air"
+      alt="Image of Nerando"
       widths={[200, 400, 600]}
       sizes="(max-width: 800px) 100vw, 620px"
       loading="eager"
@@ -24,25 +24,27 @@ import { Icon } from "astro-icon";
     </h1>
     <h2> </h2>
     <p class="text-medium mt-4 text-black-400 max-w-xl">
-      I am software engineer currently working in the front-end in Vue and JavaScript.
-      Previously worked on the MERN stack with a little PM and DevOps thrown in.
-      I am currently relearning how to learn, foundamental and applied Vue3 among other skills.  More can be found
-      here about what I am up to [learning and building ... learning garden]. Outside of tech, I like to cook,
-       I am currently watching this[ french guy] and reading this [book].
+
+      I am software engineer currently working in the front-end in Vue and JavaScript space.
+      Previously worked on the MERN stack with a little PM and DevOps skills thrown in.
+      Outside of tech, I like to cook. I am currently learning from <a href="https://www.youtube.com/@FrenchGuyCooking" target="_blank" rel="noopener noreferrer"><strong></em><i>Alex</i></strong></a> and
+      this <a href="https://tinyurl.com/yf57ymkr" target="_blank" rel="noopener noreferrer"><i><strong>book.</strong></i></a>
     </p>
     <div class="mt-6 flex flex-col sm:flex-row gap-3">
       <Link
-        href="https:github.com/nerajno"
+        href="https://tinyurl.com/NerajnoLearning"
         target="_blank"
         class="flex gap-1 items-center justify-center"
         rel="noopener">
         <Icon class="text-white w-5 h-5" name="bx:bxs-cloud-download"/>
+        <!-- <Icon class="text-white w-5 h-5" name="quill:link-out" /> -->
+        <!-- <Icon class="text-white w-5 h-5" name="bx bx-link-external" /> -->
         Currently Learning
       </Link>
       <Link
         style="outline"
         rel="noopener"
-        href="https:github.com/nerajno"
+        href="https://tinyurl.com/ynfvwtbt"
         class="flex gap-1 items-center justify-center"
         target="_blank">
         <Icon class="text-black w-4 h-4" name="bx:bxl-github" />
@@ -51,4 +53,3 @@ import { Icon } from "astro-icon";
     </div>
   </div>
 </main>
-          <!-- TODO: Pop out modal that contains the contact form -> fill out => error <=> completed => thank you close --
