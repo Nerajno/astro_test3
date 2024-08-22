@@ -1,48 +1,63 @@
 ---
-// library imports
-// import { Image } from "@astrojs/image/components";
+// ProjectCard.astro
 
-// // component imports
-import Link from "@components/ui/link.astro";
-
-// // utils imports
-// import { slugify, formatDate } from "../js/utils";
-
-const { frontmatter, url, tagType } = Astro.props;
-
-const Tag = tagType;
-
-const { title, date, author, image, description, category } = frontmatter;
+const { project } = Astro.props;
 ---
 
 <article class="card">
-  <small>
-    <a href={`/category/${slugify(category)}/`}</a>
-  </small>
-  <a href={url} aria-hidden="true" tabindex="-1">
-    <Image
-      src={image.src}
-      alt={image.alt}
+  <a href={project.image.link} aria-hidden="true" tabindex="-1">
+    <img
+      src={project.image.src}
+      alt={project.image.alt}
       width="400"
       height="250"
-      format="webp"
-      fit="cover"
-      quality={80}
-      aspectRatio="4:1"
+      loading="lazy"
     />
   </a>
   <div class="content">
     <div>
-      <Tag class="h3">
-        <a href={url}>{title}</a>
-      </Tag>
-      <small>
-        by <a href={`/author/${slugify(author)}/`}>{author}</a> • {
-          formatDate(date)
-        }
-      </small>
+      <h3>{project.name}</h3>
+      <p class="github"><a href={project.github}>{project.github}</a></p>
     </div>
-    <p>{description}</p>
-    <Link href={url} text="Read Post" style="secondary" />
+    <p>{project.description}</p>
+    <p><strong>Tags:</strong> {project.tags.join(', ')}</p>
+    <p><strong>Last updated:</strong> {project.lastUpdated}</p>
   </div>
 </article>
+
+<style>
+  .card {
+    box-shadow: 2px 2px 5px #07A0C3;
+    border-radius: 8px;
+    padding: 16px;
+    margin: 16px 0;
+    background-color: #fff;  /* Light background by default */
+    color: #000;             /* Dark text by default */
+    transition: box-shadow 0.3s ease, background-color 0.3s ease, color 0.3s ease;
+  }
+
+  /* .content{
+    width: fit-content;
+  } */
+
+  .card:hover {
+    box-shadow: 4px 4px 10px #07A0C3;
+  }
+
+  /* Dark Mode Styles */
+  /* @media (prefers-color-scheme: dark) {
+    .card {
+      background-color: #000; /* Dark background
+      color: #fff;            /* Light text
+      box-shadow: 2px 2px 5px #07A0C3; /* Retain the blue shadow
+    }
+
+    a {
+      color: #07A0C3; /* Make links stand out in dark mode
+    }
+
+    .card:hover {
+      box-shadow: 4px 4px 10px #07A0C3;
+    }
+  } */
+</style>

@@ -21,7 +21,7 @@
     "astro-navbar": "^2.3.0",
     "astro-seo": "^0.8.0",
     "boxicons": "^2.1.4",
-    "reload": "^3.2.1",
+    "reload": "^3.3.0",
     "sharp": "^0.33.0",
     "tailwindcss": "^3.3.5"
   }
