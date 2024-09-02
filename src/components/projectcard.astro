@@ -5,7 +5,7 @@ const { project } = Astro.props;
 ---
 
 <article class="card">
-  <a href={project.image.link} aria-hidden="true" tabindex="-1">
+  <a href={project.image.link}>
     <img
       src={project.image.src}
       alt={project.image.alt}
@@ -17,10 +17,11 @@ const { project } = Astro.props;
   <div class="content">
     <div>
       <h3>{project.name}</h3>
-      <p class="github"><a href={project.github}>{project.github}</a></p>
+      <p class="github"><a href={project.github || '#'} target="_blank" rel="noopener noreferrer">View on GitHub</a></p>
     </div>
-    <p>{project.description}</p>
-    <p><strong>Tags:</strong> {project.tags.join(', ')}</p>
+    </div>
+    <p><a href={project.github || '#'}  target="_blank" rel="noopener noreferrer">{project.description}</a></p>
+    <p><strong>Tags:</strong> {Array.isArray(project.tags) ? project.tags.join(', ') : project.tags}</p>
     <p><strong>Last updated:</strong> {project.lastUpdated}</p>
   </div>
 </article>
@@ -31,33 +32,40 @@ const { project } = Astro.props;
     border-radius: 8px;
     padding: 16px;
     margin: 16px 0;
-    background-color: #fff;  /* Light background by default */
-    color: #000;             /* Dark text by default */
+    background-color: #fff;
+    color: #000;
     transition: box-shadow 0.3s ease, background-color 0.3s ease, color 0.3s ease;
   }
 
-  /* .content{
+  .content {
     width: fit-content;
-  } */
+  }
 
   .card:hover {
     box-shadow: 4px 4px 10px #07A0C3;
   }
 
-  /* Dark Mode Styles */
-  /* @media (prefers-color-scheme: dark) {
+  @media (prefers-color-scheme: dark) {
     .card {
-      background-color: #000; /* Dark background
-      color: #fff;            /* Light text
-      box-shadow: 2px 2px 5px #07A0C3; /* Retain the blue shadow
+      background-color: #000;
+      color: #fff;
+      box-shadow: 2px 2px 5px #07A0C3;
     }
 
     a {
-      color: #07A0C3; /* Make links stand out in dark mode
+      color: #07A0C3;
     }
 
     .card:hover {
       box-shadow: 4px 4px 10px #07A0C3;
     }
-  } */
+
+    .project-link {
+      color: white;
+    }
+
+    .project-link:active {
+      font-style: italic;
+    }
+  }
 </style>
