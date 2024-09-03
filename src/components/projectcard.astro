@@ -18,9 +18,10 @@ const { project } = Astro.props;
     <div>
       <h3>{project.name}</h3>
       <p class="github"><a href={project.github || '#'} target="_blank" rel="noopener noreferrer">View on GitHub</a></p>
+      <p class="website"><a href={project.website || '#'} target="_blank" rel="noopener noreferrer">Live Demo</a></p>
     </div>
     </div>
-    <p><a href={project.github || '#'}  target="_blank" rel="noopener noreferrer">{project.description}</a></p>
+    <p class="project-description"><a href={project.github || '#'}  target="_blank" rel="noopener noreferrer">{project.description}</a></p>
     <p><strong>Tags:</strong> {Array.isArray(project.tags) ? project.tags.join(', ') : project.tags}</p>
     <p><strong>Last updated:</strong> {project.lastUpdated}</p>
   </div>
@@ -52,9 +53,6 @@ const { project } = Astro.props;
       box-shadow: 2px 2px 5px #07A0C3;
     }
 
-    a {
-      color: #07A0C3;
-    }
 
     .card:hover {
       box-shadow: 4px 4px 10px #07A0C3;
@@ -67,5 +65,11 @@ const { project } = Astro.props;
     .project-link:active {
       font-style: italic;
     }
+
+    .github .website {
+      font-style: italic;
+    }
+
   }
+
 </style>
