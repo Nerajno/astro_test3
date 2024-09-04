@@ -1,0 +1,36 @@
+---
+import { Image } from 'astro:image';
+import { speakingData } from 'data/speakingData.js';
+
+---
+{speakingData.map((event) => (
+    <div class="card bg-white shadow-md rounded-lg overflow-hidden">
+        <Image src={event.image} alt="Image description" class="h-full w-48 object-cover" />
+        <div class="p-4">
+            <h3 class="text-xl font-bold">{event.title}</h3>
+            <p class="text-gray-500">Event: {event.eventName}</p>
+            <p class="text-gray-500">Date: {event.date}</p>
+            <p class="text-gray-500">Location: {event.location}</p>
+            <div class="flex gap-2">
+                <a href={event.link1} target="_blank" class="bg-blue-500 text-white px-4 py-2 rounded-md">Link 1</a>
+                <a href={event.link2} target="_blank" class="bg-gray-200 text-gray-700 px-4 py-2 rounded-md">Link 2</a>
+            </div>
+        </div>
+    </div>
+))}
+---
+---
+
+<div class="card bg-white shadow-md rounded-lg overflow-hidden">
+  <Image src="path/to/your/image.jpg" alt="Image description" class="h-full w-48 object-cover" />
+  <div class="p-4">
+    <h3 class="text-xl font-bold">Title of the Card</h3>
+    <p class="text-gray-500">Event: [Event Name]</p>
+    <p class="text-gray-500">Date: [Date of Event]</p>
+    <p class="text-gray-500">Location: [Location]</p>
+    <div class="flex gap-2">
+      <a href="[Link 1]" target="_blank" class="bg-blue-500 text-white px-4 py-2 rounded-md">Link 1</a>
+      <a href="[Link 2]" target="_blank" class="bg-gray-200 text-gray-700 px-4 py-2 rounded-md">Link 2</a>
+    </div>
+  </div>
+</div>
