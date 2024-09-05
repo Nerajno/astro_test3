@@ -3,7 +3,8 @@ export const speakingData = {
   previous: [
     {
       title: "Past Conference 2022",
-      event: "Past Conference",
+      description:
+        "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla vitae semper nisl, id lacinia nunc.",
       image: "conference2022.jpg",
       date: "2022-10-10",
       location: "Los Angeles, CA",
@@ -14,7 +15,8 @@ export const speakingData = {
     },
     {
       title: "Tech Conference 2021",
-      event: "Tech Conference",
+      description:
+        "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla vitae semper nisl, id lacinia nunc.",
       image: "techconference2021.jpg",
       date: "2021-09-25",
       location: "Seattle, WA",
@@ -27,7 +29,8 @@ export const speakingData = {
   upcoming: [
     {
       title: "Tech Conference 2023",
-      event: "Tech Conference",
+      description:
+        "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla vitae semper nisl, id lacinia nunc.",
       image: "techconference2023.jpg",
       date: "2023-05-15",
       location: "San Francisco, CA",
@@ -38,7 +41,8 @@ export const speakingData = {
     },
     {
       title: "Web Dev Summit",
-      event: "Web Dev Summit",
+      description:
+        "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla vitae semper nisl, id lacinia nunc.",
       image: "webdevsummit2023.jpg",
       date: "2023-08-20",
       location: "New York, NY",
