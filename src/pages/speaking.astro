@@ -1,33 +1,32 @@
 ---
-import { speakingData } from "data/speakingData";
-import Layout from "@layouts/Layout.astro";
-import Container from "@components/container.astro";
-import Sectionhead from "@components/sectionhead.astro";
-import Events from "@components/events.astro";
+import { speakingData } from '../data/speakingData';
+import Layout from '@layouts/Layout.astro';
+import Container from '@components/container.astro';
+import Sectionhead from '@components/sectionhead.astro';
 
+import Events from '@components/events.astro';
 
-<Layout title="Speaking">
+const gridColumns = 3;
+---
+
+<Layout title='Speaking'>
   <Container>
     <Sectionhead>
-      <Fragment slot="title">Speaking Engagements</Fragment>
+      <Fragment slot='title'>Speaking Engagements</Fragment>
+      <Fragment slot='desc'>
+        I have had the pleasure of speaking at the following events.
+      </Fragment>
     </Sectionhead>
-    <main class="mt-16">
-    <div class="flex flex-col gap-3 mx-auto max-w-4xl mt-16">
-      <h2 class="font-bold text-3xl text-gray-800">
-        "So here are my #2cents" - A list of talks I have given.
-      </h2>
-      <p class="text-lg leading-relaxed text-slate-500">
-        ipsum Lorem ipsum dolor sit amet consectetur adipisicing elit. Laboriosam dolorum nulla cumque odio rem aut, impedit commodi illo, dignissimos iste laborum quibusdam maiores facilis voluptatem. Minus facilis magni totam ea!
-      </p>
-    </div>
-    <div class="grid md:grid-cols-3 gap-10 mx-auto max-w-4xl mt-12">
-      {
-        speakingData.map((event) => (
-          <Events{...event} />
-        ))
-      }
-    </div>
-  </main>
+      <div class='flex flex-col gap-3 mx-auto max-w-4xl mt-16'>
+        <p class='text-lg leading-relaxed text-slate-500'>
+          ipsum Lorem ipsum dolor sit amet consectetur adipisicing elit.
+          Laboriosam dolorum nulla cumque odio rem aut, impedit commodi illo,
+          dignissimos iste laborum quibusdam maiores facilis voluptatem. Minus
+          facilis magni totam ea!
+        </p>
+      </div>
+      <div class='grid md:grid-cols-3 gap-10 mx-auto max-w-4xl mt-12'>
+        {speakingData.map((event) => <Events {...event} />)}
+      </div>
   </Container>
 </Layout>
-
