@@ -6,7 +6,10 @@ import Sectionhead from '@components/sectionhead.astro';
 
 import Events from '@components/events.astro';
 
-const gridColumns = 3;
+const testBirthday = new Date(2022, 11, 24);
+console.log(testBirthday);
+// const gridColumns = 3;
+// Look into this also : https://scottwillsey.com/astro-templates-json/
 ---
 
 <Layout title='Speaking'>
@@ -26,7 +29,7 @@ const gridColumns = 3;
         </p>
       </div>
       <div class='grid md:grid-cols-3 gap-10 mx-auto max-w-4xl mt-12'>
-        {speakingData.map((event) => <Events {...event} />)}
+        <!-- {speakingData?.map((event) => <Events {...event} />)} -->
       </div>
   </Container>
 </Layout>
