@@ -1,14 +1,12 @@
 ---
-import { speakingData } from '../data/speakingData';
+import { speakingData }  from '../data/speakingData.js';
 import Layout from '@layouts/Layout.astro';
 import Container from '@components/container.astro';
 import Sectionhead from '@components/sectionhead.astro';
-
 import Events from '@components/events.astro';
 
-const testBirthday = new Date(2022, 11, 24);
-console.log(testBirthday);
-// const gridColumns = 3;
+
+// consgridColumns = 3;
 // Look into this also : https://scottwillsey.com/astro-templates-json/
 ---
 
@@ -29,7 +27,7 @@ console.log(testBirthday);
         </p>
       </div>
       <div class='grid md:grid-cols-3 gap-10 mx-auto max-w-4xl mt-12'>
-        <!-- {speakingData?.map((event) => <Events {...event} />)} -->
+            {speakingData?.map((event) => <Events {...event} />)}
       </div>
   </Container>
 </Layout>
