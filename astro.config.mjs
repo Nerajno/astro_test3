@@ -11,6 +11,9 @@ export default defineConfig({
   image: {
     domains: ["picsum.photos"],
   },
+  content: {
+    sources: ['src/content']
+  },
   markdown: {
     remarkPlugins: [remarkReadingTime],
   },
