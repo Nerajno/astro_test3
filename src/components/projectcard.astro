@@ -1,11 +1,28 @@
 ---
 // ProjectCard.astro
+interface Project {
+  name: string;
+  description: string;
+  image: {
+    src: string;
+    alt: string;
+    link: string;
+  };
+  github?: string;
+  website?: string;
+  tags: string[];
+  lastUpdated: string;
+}
+
+interface Props {
+  project: Project;
+}
 
 const { project } = Astro.props;
 ---
 
 <article class="card">
-  <a href={project.image.link}>
+  <a href={project.image.link} class="image-link">
     <img
       src={project.image.src}
       alt={project.image.alt}
@@ -15,15 +32,26 @@ const { project } = Astro.props;
     />
   </a>
   <div class="content">
-    <div>
-      <h3>{project.name}</h3>
-      <p class="github"><a href={project.github || '#'} target="_blank" rel="noopener noreferrer">View on GitHub</a></p>
-      <p class="website"><a href={project.website || '#'} target="_blank" rel="noopener noreferrer">Live Demo</a></p>
+    <h3>{project.name}</h3>
+    <p class="project-description">{project.description}</p>
+    <div class="links">
+      {project.github && (
+        <a href={project.github} class="github-link" target="_blank" rel="noopener noreferrer">
+          View on GitHub
+        </a>
+      )}
+      {project.website && (
+        <a href={project.website} class="website-link" target="_blank" rel="noopener noreferrer">
+          Live Demo
+        </a>
+      )}
     </div>
-    </div>
-    <p class="project-description"><a href={project.github || '#'}  target="_blank" rel="noopener noreferrer">{project.description}</a></p>
-    <p><strong>Tags:</strong> {Array.isArray(project.tags) ? project.tags.join(', ') : project.tags}</p>
-    <p><strong>Last updated:</strong> {project.lastUpdated}</p>
+    <p class="tags">
+      <strong>Tags:</strong> {project.tags.join(', ')}
+    </p>
+    <p class="last-updated">
+      <strong>Last updated:</strong> <time datetime={project.lastUpdated}>{project.lastUpdated}</time>
+    </p>
   </div>
 </article>
 
@@ -38,38 +66,75 @@ const { project } = Astro.props;
     transition: box-shadow 0.3s ease, background-color 0.3s ease, color 0.3s ease;
   }
 
-  .content {
-    width: fit-content;
-  }
-
   .card:hover {
     box-shadow: 4px 4px 10px #07A0C3;
   }
 
-  @media (prefers-color-scheme: dark) {
-    .card {
-      background-color: #000;
-      color: #fff;
-      box-shadow: 2px 2px 5px #07A0C3;
-    }
-
-
-    .card:hover {
-      box-shadow: 4px 4px 10px #07A0C3;
-    }
-
-    .project-link {
-      color: white;
-    }
-
-    .project-link:active {
-      font-style: italic;
-    }
-
-    .github .website {
-      font-style: italic;
-    }
-
+  .image-link {
+    display: block;
+    margin-bottom: 16px;
   }
 
+  .content {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  .links {
+    display: flex;
+    gap: 16px;
+  }
+
+  .github-link,
+  .website-link {
+    display: inline-block;
+    padding: 8px 16px;
+    border-radius: 4px;
+    text-decoration: none;
+    font-weight: bold;
+    transition: background-color 0.3s ease, color 0.3s ease;
+  }
+
+  .github-link {
+    background-color: #24292e;
+    color: #fff;
+  }
+
+  .website-link {
+    background-color: #07A0C3;
+    color: #fff;
+  }
+
+  .github-link:hover,
+  .website-link:hover {
+    opacity: 0.9;
+  }
+
+  @media (prefers-color-scheme: dark) {
+    .card {
+      background-color: #1a1a1a;
+      color: #fff;
+    }
+
+    .github-link {
+      background-color: #6e7681;
+    }
+
+    .website-link {
+      background-color: #0e8caa;
+    }
+  }
+
+  @media (max-width: 768px) {
+    .links {
+      flex-direction: column;
+      gap: 6px;
+    }
+
+    .github-link,
+    .website-link {
+      text-align: center;
+    }
+  }
 </style>
