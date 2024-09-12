@@ -14,7 +14,7 @@ export async function getStaticPaths() {
 
 // Get the entry directly from the prop on render
 const { entry } = Astro.props;
-const { Content } = await entry.render();
+const { Content, remarkPluginFrontmatter } = await entry.render();
 ---
 
 <Layout title={entry.data.title}>
@@ -46,6 +46,8 @@ const { Content } = await entry.render();
           }
         </div>
       </div>
+      <br />
+      <p>{remarkPluginFrontmatter.minutesRead}</p>
     </div>
 
     <div class="mx-auto prose prose-lg mt-6 max-w-3xl">
