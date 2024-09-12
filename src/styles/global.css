@@ -1,0 +1,10 @@
+.fixed-footer {
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    background-color: white; /* Adjust as needed */
+    z-index: 1000; /* Ensure it stays above other content */
+    padding: 10px 0; /* Optional: Add padding for better spacing */
+    box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.1); /* Optional: Add a shadow for better visibility */
+  }

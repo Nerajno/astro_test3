@@ -1,5 +1,6 @@
 export const speakingData = [
     {
+      id: "past-conference-2022",
       title: "Past Conference 2022",
       description:
         "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla vitae semper nisl, id lacinia nunc.",
@@ -12,6 +13,7 @@ export const speakingData = [
       },
     },
     {
+      id: "tech-conference-2021",
       title: "Tech Conference 2021",
       description:
         "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla vitae semper nisl, id lacinia nunc.",
@@ -24,6 +26,7 @@ export const speakingData = [
       },
     },
     {
+      id: "past-conference-2022",
       title: "Tech Conference 2023",
       description:
         "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla vitae semper nisl, id lacinia nunc.",
@@ -36,6 +39,7 @@ export const speakingData = [
       },
     },
     {
+      id: "past-conference-2022",
       title: "Web Dev Summit",
       description:
         "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla vitae semper nisl, id lacinia nunc.",

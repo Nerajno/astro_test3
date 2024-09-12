@@ -1,13 +1,12 @@
 ---
-import { speakingData }  from '../data/speakingData.js';
+import { speakingData } from '../data/speakingData.js';
 import Layout from '@layouts/Layout.astro';
 import Container from '@components/container.astro';
 import Sectionhead from '@components/sectionhead.astro';
-import Events from '@components/events.astro';
+import Event from '@components/events.astro';
 
-
-// consgridColumns = 3;
-// Look into this also : https://scottwillsey.com/astro-templates-json/
+// Sort the speaking data by date (most recent first)
+const sortedSpeakingData = speakingData.sort((a, b) => new Date(b.date) - new Date(a.date));
 ---
 
 <Layout title='Speaking'>
@@ -18,16 +17,26 @@ import Events from '@components/events.astro';
         I have had the pleasure of speaking at the following events.
       </Fragment>
     </Sectionhead>
-      <div class='flex flex-col gap-3 mx-auto max-w-4xl mt-16'>
-        <p class='text-lg leading-relaxed text-slate-500'>
-          ipsum Lorem ipsum dolor sit amet consectetur adipisicing elit.
-          Laboriosam dolorum nulla cumque odio rem aut, impedit commodi illo,
-          dignissimos iste laborum quibusdam maiores facilis voluptatem. Minus
-          facilis magni totam ea!
-        </p>
-      </div>
-      <div class='grid md:grid-cols-3 gap-10 mx-auto max-w-4xl mt-12'>
-            {speakingData?.map((event) => <Events {...event} />)}
-      </div>
+    <div class='flex flex-col gap-3 mx-auto max-w-4xl mt-16'>
+      <p class='text-lg leading-relaxed text-slate-500'>
+        ipsum Lorem ipsum dolor sit amet consectetur adipisicing elit.
+        Laboriosam dolorum nulla cumque odio rem aut, impedit commodi illo,
+        dignissimos iste laborum quibusdam maiores facilis voluptatem. Minus
+        facilis magni totam ea!
+      </p>
+    </div>
+    <div class='grid md:grid-cols-1 gap-10 mx-auto max-w-4xl mt-12'>
+      {sortedSpeakingData.map((event) => (
+        <Event
+          id={event.id}
+          title={event.title}
+          description={event.description}
+          image={event.image}
+          date={event.date}
+          location={event.location}
+          links={event.links}
+        />
+      ))}
+    </div>
   </Container>
 </Layout>
