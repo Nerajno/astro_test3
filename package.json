@@ -23,6 +23,7 @@
     "astro-seo": "^0.8.4",
     "boxicons": "^2.1.4",
     "mdast-util-to-string": "^4.0.0",
+    "nodemailer": "^6.9.15",
     "pinia": "^2.2.2",
     "reading-time": "^1.5.0",
     "reload": "^3.3.0",
