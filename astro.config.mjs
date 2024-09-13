@@ -6,7 +6,8 @@ import { remarkReadingTime } from './remark-reading-time.mjs';
 
 // https://astro.build/config
 export default defineConfig({
-  site: "https://astroship.web3templates.com",
+  site: "https://astro-portfolio-v3-dusky.vercel.app",
+  output: "hybrid",
   integrations: [tailwind(), mdx(), sitemap()],
   image: {
     domains: ["picsum.photos"],
