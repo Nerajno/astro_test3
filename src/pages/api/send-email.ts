@@ -1,10 +1,20 @@
 import sgMail from '@sendgrid/mail';
 
-export const post = async ({ request }) => {
+export const POST = async ({ request }) => {
   const body = await request.json();
   const { name, email, message } = body;
 
-  sgMail.setApiKey(import.meta.env.SENDGRID_API_KEY);
+  const apiKey = process.env.SENDGRID_API_KEY || import.meta.env.SENDGRID_API_KEY || "";
+
+  if (!apiKey.startsWith("SG.")) {
+    console.error("Invalid SendGrid API key format");
+    return new Response(JSON.stringify({ error: 'Invalid API key configuration' }), {
+      status: 500,
+      headers: { 'Content-Type': 'application/json' },
+    });
+  }
+
+  sgMail.setApiKey(apiKey);
 
   const msg = {
     to: 'Iamnerandojohnson@gmail.com', // Change to your recipient
