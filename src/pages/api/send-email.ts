@@ -17,8 +17,8 @@ export const POST = async ({ request }) => {
   sgMail.setApiKey(apiKey);
 
   const msg = {
-    to: 'Iamnerandojohnson@gmail.com', // Change to your recipient
-    from: 'Iamnerandojohnson@gmail.com', // Change to your verified sender
+    to: 'nerando@developingdvlpr.com', // Change to your recipient
+    from: 'nerando@developingdvlpr.com', // Change to your verified sender
     subject: `New message from ${name}`,
     text: `From: ${name} (${email})\n\nMessage: ${message}`,
     html: `<strong>From:</strong> ${name} (${email})<br><br><strong>Message:</strong><br>${message}`,
