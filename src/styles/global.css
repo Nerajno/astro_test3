@@ -3,33 +3,76 @@
   --text-color: #000000;
   --nav-link-color: #000000;
   --icon-fill: #000000;
+  --header-bg: #f0f0f0;
+  --card-bg: #ffffff;
+  --card-border: #e0e0e0;
+  --button-bg: #3498db;
+  --button-text: #ffffff;
+  --hover-color: #2980b9;
 }
 
 .dark {
-  --background-color: #0d0950;
+  --background-color: #000000;
   --text-color: #ffffff;
   --nav-link-color: #ffffff;
   --icon-fill: #ffffff;
+  --header-bg: #0a043c;
+  --card-bg: #1a1a2e;
+  --card-border: #34344a;
+  --button-bg: #3498db;
+  --button-text: #ffffff;
+  --hover-color: #2980b9;
 }
 
 body {
   background-color: var(--background-color);
   color: var(--text-color);
+  transition: background-color 0.3s ease, color 0.3s ease;
 }
 
 .nav-links a {
   color: var(--nav-link-color);
+  transition: color 0.3s ease;
 }
 
+/* Remove this as it's redundant with the .nav-links a selector above */
+/* .dark .nav-link {
+  color: var(--nav-link-color);
+} */
 
-/* .fixed-footer {
-    position: fixed;
-    left: 0;
-    bottom: 0;
-    width: 100%;
-    background-color: var(--background-color);
-    z-index: 1000;
-    padding: 10px 0;
-    box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.1);
-  }
-  */
+header {
+  background-color: var(--header-bg);
+  transition: background-color 0.3s ease;
+}
+
+.card {
+  background-color: var(--card-bg);
+  border-color: var(--card-border);
+  transition: background-color 0.3s ease, border-color 0.3s ease;
+}
+
+button, .button {
+  background-color: var(--button-bg);
+  color: var(--button-text);
+  transition: background-color 0.3s ease;
+}
+
+button:hover, .button:hover {
+  background-color: var(--hover-color);
+}
+
+/* Uncomment and adjust as needed */
+/*
+.fixed-footer {
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  background-color: var(--background-color);
+  color: var(--text-color);
+  z-index: 1000;
+  padding: 10px 0;
+  box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.1);
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+*/
