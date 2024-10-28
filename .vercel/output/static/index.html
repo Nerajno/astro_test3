@@ -1,0 +1,188 @@
+<!DOCTYPE html><html lang="en"> <head><meta charset="UTF-8"><meta name="viewport" content="width=device-width"><link rel="icon" type="image/x-icon" href="/my_favicon.ico"><meta name="generator" content="Astro v3.6.4"><!-- <link rel="preload" as="image" href={src} alt="Hero" /> --><title>Nerando's Portfolio</title><link rel="canonical" href="https://astro-portfolio-v3-dusky.vercel.app/"><meta name="description" content="Astroship is a starter website template for Astro built with TailwindCSS."><meta name="robots" content="index, follow"><meta property="og:title" content="Nerando's Portfolio"><meta property="og:type" content="website"><meta property="og:image" content="https://astro-portfolio-v3-dusky.vercel.app/Banner_for_site.png"><meta property="og:url" content="https://astro-portfolio-v3-dusky.vercel.app/"><meta property="og:image:url" content="https://astro-portfolio-v3-dusky.vercel.app/Banner_for_site.png"><meta property="og:image:alt" content="Nerando's Portfolio ~ Meme Image"><meta name="twitter:creator" content="nerajno"><link rel="stylesheet" href="/_astro/about.1990a1d7.css" /></head> <body> <div class="max-w-screen-xl mx-auto px-5">  <header class="flex flex-col lg:flex-row justify-between items-center my-5">  <div class="flex w-full lg:w-auto items-center justify-between"> <a href="/" class="text-lg"><span class="font-bold text-slate-800">NJ</span> </a> <div class="block lg:hidden"> <button id="astronav-menu" aria-label="Toggle Menu">  <svg fill="currentColor" class="w-4 h-4 text-gray-800" width="24" height="24" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"> <title>Toggle Menu</title> <path class="astronav-close-icon astronav-toggle hidden" fill-rule="evenodd" clip-rule="evenodd" d="M18.278 16.864a1 1 0 01-1.414 1.414l-4.829-4.828-4.828 4.828a1 1 0 01-1.414-1.414l4.828-4.829-4.828-4.828a1 1 0 011.414-1.414l4.829 4.828 4.828-4.828a1 1 0 111.414 1.414l-4.828 4.829 4.828 4.828z"></path> <path class="astronav-open-icon astronav-toggle" fill-rule="evenodd" d="M4 5h16a1 1 0 010 2H4a1 1 0 110-2zm0 6h16a1 1 0 010 2H4a1 1 0 010-2zm0 6h16a1 1 0 010 2H4a1 1 0 010-2z"></path> </svg>  </button> </div> </div> <nav class="astronav-items astronav-toggle hidden w-full lg:w-auto mt-2 lg:flex lg:mt-0">  <ul class="flex flex-col lg:flex-row lg:gap-3"> <li> <a href="/" class="flex lg:px-3 py-2 items-center text-gray-600 hover:text-gray-900"> <span> Home</span>  </a> </li><li> <a href="/blog" class="flex lg:px-3 py-2 items-center text-gray-600 hover:text-gray-900"> <span> Blog</span>  </a> </li><li> <a href="/portfolio" class="flex lg:px-3 py-2 items-center text-gray-600 hover:text-gray-900"> <span> Portfolio</span>  </a> </li><li> <a href="/speaking" class="flex lg:px-3 py-2 items-center text-gray-600 hover:text-gray-900"> <span> Speaking</span>  </a> </li><li> <a href="/about" class="flex lg:px-3 py-2 items-center text-gray-600 hover:text-gray-900"> <span> About</span>  </a> </li><li> <a href="https://nerajnodigitalgarden.netlify.app" class="flex lg:px-3 py-2 items-center text-gray-600 hover:text-gray-900"> <span> Junior~ish</span> <span class="ml-1 px-2 py-0.5 text-[10px] animate-pulse font-semibold uppercase text-white bg-indigo-600 rounded-full">
+New
+</span> </a> </li> </ul>  </nav>  <script>(function(){const closeOnClick = false;
+
+["DOMContentLoaded", "astro:after-swap"].forEach((event) => {
+  document.addEventListener(event, addListeners);
+});
+
+// Function to clone and replace elements
+function cloneAndReplace(element) {
+  const clone = element.cloneNode(true);
+  element.parentNode.replaceChild(clone, element);
+}
+
+function addListeners() {
+  // Clean up existing listeners
+  const oldMenuButton = document.getElementById("astronav-menu");
+  if (oldMenuButton) {
+    cloneAndReplace(oldMenuButton);
+  }
+
+  const oldDropdownMenus = document.querySelectorAll(".astronav-dropdown");
+  oldDropdownMenus.forEach((menu) => {
+    cloneAndReplace(menu);
+  });
+
+  // Mobile nav toggle
+  const menuButton = document.getElementById("astronav-menu");
+  menuButton && menuButton.addEventListener("click", toggleMobileNav);
+
+  // Dropdown menus
+  const dropdownMenus = document.querySelectorAll(".astronav-dropdown");
+  dropdownMenus.forEach((menu) => {
+    const button = menu.querySelector("button");
+    button &&
+      button.addEventListener("click", (event) =>
+        toggleDropdownMenu(event, menu, dropdownMenus)
+      );
+
+    // Handle Submenu Dropdowns
+    const dropDownSubmenus = menu.querySelectorAll(
+      ".astronav-dropdown-submenu"
+    );
+
+    dropDownSubmenus.forEach((submenu) => {
+      const submenuButton = submenu.querySelector("button");
+      submenuButton &&
+        submenuButton.addEventListener("click", (event) => {
+          event.stopImmediatePropagation();
+          toggleSubmenuDropdown(event, submenu);
+        });
+    });
+  });
+
+  // Clicking away from dropdown will remove the dropdown class
+  document.addEventListener("click", closeAllDropdowns);
+
+  if (closeOnClick) {
+    handleCloseOnClick();
+  }
+}
+
+function toggleMobileNav() {
+  [...document.querySelectorAll(".astronav-toggle")].forEach((el) => {
+    el.classList.toggle("hidden");
+  });
+}
+
+function toggleDropdownMenu(event, menu, dropdownMenus) {
+  toggleMenu(menu);
+
+  // Close one dropdown when selecting another
+  Array.from(dropdownMenus)
+    .filter((el) => el !== menu && !menu.contains(el))
+    .forEach(closeMenu);
+
+  event.stopPropagation();
+}
+
+function toggleSubmenuDropdown(event, submenu) {
+  event.stopPropagation();
+  toggleMenu(submenu);
+
+  // Close sibling submenus at the same nesting level
+  const siblingSubmenus = submenu
+    .closest(".astronav-dropdown")
+    .querySelectorAll(".astronav-dropdown-submenu");
+  Array.from(siblingSubmenus)
+    .filter((el) => el !== submenu && !submenu.contains(el))
+    .forEach(closeMenu);
+}
+
+function closeAllDropdowns(event) {
+  const dropdownMenus = document.querySelectorAll(".dropdown-toggle");
+  const dropdownParent = document.querySelectorAll(
+    ".astronav-dropdown, .astronav-dropdown-submenu"
+  );
+  const isButtonInsideDropdown = [
+    ...document.querySelectorAll(
+      ".astronav-dropdown button, .astronav-dropdown-submenu button, #astronav-menu"
+    ),
+  ].some((button) => button.contains(event.target));
+  if (!isButtonInsideDropdown) {
+    dropdownMenus.forEach((d) => {
+      // console.log("I ran", d);
+      // if (!d.contains(event.target)) {
+      d.classList.remove("open");
+      d.removeAttribute("open");
+      d.classList.add("hidden");
+      // }
+    });
+    dropdownParent.forEach((d) => {
+      d.classList.remove("open");
+      d.removeAttribute("open");
+      d.setAttribute("aria-expanded", "false");
+    });
+  }
+}
+
+function toggleMenu(menu) {
+  menu.classList.toggle("open");
+  const expanded = menu.getAttribute("aria-expanded") === "true";
+  menu.setAttribute("aria-expanded", expanded ? "false" : "true");
+  menu.hasAttribute("open")
+    ? menu.removeAttribute("open")
+    : menu.setAttribute("open", "");
+
+  const dropdownToggle = menu.querySelector(".dropdown-toggle");
+  const dropdownExpanded = dropdownToggle.getAttribute("aria-expanded");
+  dropdownToggle.classList.toggle("hidden");
+  dropdownToggle.setAttribute(
+    "aria-expanded",
+    dropdownExpanded === "true" ? "false" : "true"
+  );
+}
+
+function closeMenu(menu) {
+  // console.log("closing", menu);
+  menu.classList.remove("open");
+  menu.removeAttribute("open");
+  menu.setAttribute("aria-expanded", "false");
+  const dropdownToggles = menu.querySelectorAll(".dropdown-toggle");
+  dropdownToggles.forEach((toggle) => {
+    toggle.classList.add("hidden");
+    toggle.setAttribute("aria-expanded", "false");
+  });
+}
+
+function handleCloseOnClick() {
+  const navMenuItems = document.querySelector(".astronav-items");
+  const navToggle = document.getElementById("astronav-menu");
+  const navLink = navMenuItems && navMenuItems.querySelectorAll("a");
+
+  const MenuIcons = navToggle.querySelectorAll(".astronav-toggle");
+
+  navLink &&
+    navLink.forEach((item) => {
+      item.addEventListener("click", () => {
+        navMenuItems?.classList.add("hidden");
+        MenuIcons.forEach((el) => {
+          el.classList.toggle("hidden");
+        });
+      });
+    });
+}
+})();</script> </header>  </div>  <div class="max-w-screen-xl mx-auto px-5">  <main class="grid lg:grid-cols-2 place-items-center pt-16 pb-8 md:pt-12 md:pb-24"> <div class="py-6 md:order-1 hidden md:block"> <picture> <source srcset="/_astro/Banner_for_site.bcee917f_Z12JHND.webp 200w, /_astro/Banner_for_site.bcee917f_13rlsH.webp 400w, /_astro/Banner_for_site.bcee917f_aHkH3.webp 600w" type="image/webp" sizes="(max-width: 800px) 100vw, 620px"> <img src="/_astro/Banner_for_site.bcee917f_Z2o64Cs.png" srcset="/_astro/Banner_for_site.bcee917f_Z1w2HBN.png 200w, /_astro/Banner_for_site.bcee917f_z9lEx.png 400w, /_astro/Banner_for_site.bcee917f_Z2o64Cs.png 600w" alt="Image of Nerando" sizes="(max-width: 800px) 100vw, 620px" loading="eager" width="499" height="500" decoding="async"> </picture> </div> <div> <h1 class="text-5xl lg:text-6xl xl:text-7xl font-bold lg:tracking-tight xl:tracking-tighter">
+Hi, I am Nerando
+</h1> <h2></h2> <p class="text-medium mt-4 text-black-400 max-w-xl">
+I am software developer currently working in the front-end in Vue and JavaScript space.
+      Previously worked on the MERN stack with a little PM and DevOps skills thrown in.
+      Outside of tech, I am bookwork with a spatula among other things.
+</p> <div class="mt-6 flex flex-col sm:flex-row gap-3"> <a href="https://tinyurl.com/NerajnoLearning" target="_blank" rel="noopener" class="rounded text-center transition focus-visible:ring-2 ring-offset-2 ring-gray-200 px-5 py-2.5 bg-black text-white hover:bg-gray-800  border-2 border-transparent flex gap-1 items-center justify-center"> <svg viewBox="0 0 24 24" class="text-white w-5 h-5" astro-icon="bx:bxs-cloud-download"><path fill="currentColor" d="M18.944 11.112C18.507 7.67 15.56 5 12 5 9.244 5 6.85 6.61 5.757 9.149 3.609 9.792 2 11.82 2 14c0 2.657 2.089 4.815 4.708 4.971V19H17.99v-.003L18 19c2.206 0 4-1.794 4-4a4.008 4.008 0 0 0-3.056-3.888zM8 12h3V9h2v3h3l-4 5-4-5z"/></svg>  
+Currently Learning
+ </a> <a href="https://tinyurl.com/ynfvwtbt" rel="noopener" target="_blank" class="rounded text-center transition focus-visible:ring-2 ring-offset-2 ring-gray-200 px-5 py-2.5 bg-white border-2 border-black hover:bg-gray-100 text-black  flex gap-1 items-center justify-center"> <svg viewBox="0 0 24 24" class="text-black w-4 h-4" astro-icon="bx:bxl-github"><path fill="currentColor" fill-rule="evenodd" d="M12.026 2c-5.509 0-9.974 4.465-9.974 9.974 0 4.406 2.857 8.145 6.821 9.465.499.09.679-.217.679-.481 0-.237-.008-.865-.011-1.696-2.775.602-3.361-1.338-3.361-1.338-.452-1.152-1.107-1.459-1.107-1.459-.905-.619.069-.605.069-.605 1.002.07 1.527 1.028 1.527 1.028.89 1.524 2.336 1.084 2.902.829.091-.645.351-1.085.635-1.334-2.214-.251-4.542-1.107-4.542-4.93 0-1.087.389-1.979 1.024-2.675-.101-.253-.446-1.268.099-2.64 0 0 .837-.269 2.742 1.021a9.582 9.582 0 0 1 2.496-.336 9.554 9.554 0 0 1 2.496.336c1.906-1.291 2.742-1.021 2.742-1.021.545 1.372.203 2.387.099 2.64.64.696 1.024 1.587 1.024 2.675 0 3.833-2.33 4.675-4.552 4.922.355.308.675.916.675 1.846 0 1.334-.012 2.41-.012 2.737 0 .267.178.577.687.479C19.146 20.115 22 16.379 22 11.974 22 6.465 17.535 2 12.026 2z" clip-rule="evenodd"/></svg>
+Currently Building
+ </a> </div> </div> </main> <div class="mt-16 md:mt-0"> <h2 class="text-4xl lg:text-5xl font-bold lg:tracking-tight">
+Current Craft Characteristics
+</h2> <p class="text-lg mt-4 text-slate-600">
+Writing code moved from an interest to a passionate hobby to my current career/craft. I am currently working in the front-end space as
+    a junior Vue frontend developer. Here are a few characteristics/things I am working on :
+</p> </div> <div class="grid sm:grid-cols-2 md:grid-cols-3 mt-16 gap-16"> <div class="flex gap-4 items-start"> <div class="mt-1 bg-black rounded-full  p-2 w-8 h-8 shrink-0"> <svg viewBox="0 0 24 24" class="text-white" astro-icon="bx:bxs-briefcase"><path fill="currentColor" d="M20 6h-3V4c0-1.103-.897-2-2-2H9c-1.103 0-2 .897-2 2v2H4c-1.103 0-2 .897-2 2v3h20V8c0-1.103-.897-2-2-2zM9 4h6v2H9V4zm5 10h-4v-2H2v7c0 1.103.897 2 2 2h16c1.103 0 2-.897 2-2v-7h-8v2z"/></svg> </div> <div> <h3 class="font-semibold text-lg">Problem Solver</h3> <p class="text-slate-500 mt-2 leading-relaxed">I am versatile problem solver with extensive full-stack development experience across diverse projects and technologies. My skills range from building complex web platforms to creating award-winning ad technologies, showcasing adaptability in tackling varied challenges. </p> </div> </div><div class="flex gap-4 items-start"> <div class="mt-1 bg-black rounded-full  p-2 w-8 h-8 shrink-0"> <svg viewBox="0 0 24 24" class="text-white" astro-icon="bx:bxs-window-alt"><path fill="currentColor" d="M20 3H4c-1.103 0-2 .897-2 2v14c0 1.103.897 2 2 2h16c1.103 0 2-.897 2-2V5c0-1.103-.897-2-2-2zm-3 3h2v2h-2V6zm-3 0h2v2h-2V6zM4 19v-9h16.001l.001 9H4z"/></svg> </div> <div> <h3 class="font-semibold text-lg">Tech Community Builder</h3> <p class="text-slate-500 mt-2 leading-relaxed">Beyond growing my technical expertise, I have been committed to mentoring and civic engagement demonstrates a holistic approach to problem-solving in both professional and community contexts. I have had a hand in the Atlanta tech community organizer for the last 5+ years.</p> </div> </div><div class="flex gap-4 items-start"> <div class="mt-1 bg-black rounded-full  p-2 w-8 h-8 shrink-0"> <svg viewBox="0 0 24 24" class="text-white" astro-icon="bx:bxs-data"><path fill="currentColor" d="M20 6c0-2.168-3.663-4-8-4S4 3.832 4 6v2c0 2.168 3.663 4 8 4s8-1.832 8-4V6zm-8 13c-4.337 0-8-1.832-8-4v3c0 2.168 3.663 4 8 4s8-1.832 8-4v-3c0 2.168-3.663 4-8 4z"/><path fill="currentColor" d="M20 10c0 2.168-3.663 4-8 4s-8-1.832-8-4v3c0 2.168 3.663 4 8 4s8-1.832 8-4v-3z"/></svg> </div> <div> <h3 class="font-semibold text-lg">Tech Speaker</h3> <p class="text-slate-500 mt-2 leading-relaxed">I have been a speaker at tech conferences and meetups. I have been granted the opportunity to share and grow my knowledge and skills on various tech conferences and meetups, eg.Vue Conf 2024, ConnectTech 2023 among other events.</p> </div> </div><div class="flex gap-4 items-start"> <div class="mt-1 bg-black rounded-full  p-2 w-8 h-8 shrink-0"> <svg viewBox="0 0 24 24" class="text-white" astro-icon="bx:bxs-bot"><path fill="currentColor" d="M21 10.975V8a2 2 0 0 0-2-2h-6V4.688c.305-.274.5-.668.5-1.11a1.5 1.5 0 0 0-3 0c0 .442.195.836.5 1.11V6H5a2 2 0 0 0-2 2v2.998l-.072.005A.999.999 0 0 0 2 12v2a1 1 0 0 0 1 1v5a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-5a1 1 0 0 0 1-1v-1.938a1.004 1.004 0 0 0-.072-.455c-.202-.488-.635-.605-.928-.632zM7 12c0-1.104.672-2 1.5-2s1.5.896 1.5 2-.672 2-1.5 2S7 13.104 7 12zm8.998 6c-1.001-.003-7.997 0-7.998 0v-2s7.001-.002 8.002 0l-.004 2zm-.498-4c-.828 0-1.5-.896-1.5-2s.672-2 1.5-2 1.5.896 1.5 2-.672 2-1.5 2z"/></svg> </div> <div> <h3 class="font-semibold text-lg">Learner and Facilitator</h3> <p class="text-slate-500 mt-2 leading-relaxed">Been a product and a result driven learner, simply put I learn best by building. I have been doing this since I came to this craft (mostly). I have also taken time to become a decent knowledge transfer agent with my known tech skillset.</p> </div> </div><div class="flex gap-4 items-start"> <div class="mt-1 bg-black rounded-full  p-2 w-8 h-8 shrink-0"> <svg viewBox="0 0 24 24" class="text-white" astro-icon="bx:bxs-file-find"><path fill="currentColor" d="M6 22h12c.178 0 .348-.03.512-.074l-3.759-3.759A4.966 4.966 0 0 1 12 19c-2.757 0-5-2.243-5-5s2.243-5 5-5 5 2.243 5 5a4.964 4.964 0 0 1-.833 2.753l3.759 3.759c.044-.164.074-.334.074-.512V8l-6-6H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2z"/><circle cx="12" cy="14" r="3" fill="currentColor"/></svg> </div> <div> <h3 class="font-semibold text-lg">Tech Consultant</h3> <p class="text-slate-500 mt-2 leading-relaxed">Over the past 5 years, I have worked on various tech projects providing solutions to small and medium sized companies, in a range of roles.</p> </div> </div><div class="flex gap-4 items-start"> <div class="mt-1 bg-black rounded-full  p-2 w-8 h-8 shrink-0"> <svg viewBox="0 0 24 24" class="text-white" astro-icon="bx:bxs-user"><path fill="currentColor" d="M7.5 6.5C7.5 8.981 9.519 11 12 11s4.5-2.019 4.5-4.5S14.481 2 12 2 7.5 4.019 7.5 6.5zM20 21h1v-1c0-3.859-3.141-7-7-7h-4c-3.86 0-7 3.141-7 7v1h17z"/></svg> </div> <div> <h3 class="font-semibold text-lg">Tinker</h3> <p class="text-slate-500 mt-2 leading-relaxed">Want to figure out the smallest Linux distro that still offers a decent experience? I can help! With sufficient experience in the software development space, I can assist in solving most problems or knowing where to look for help.</p> </div> </div> </div> <div class="mt-24"> <h2 class="text-center text-slate-500">Some Technologies and Tooling I have had experience with : </h2> <div class="flex gap-10 md:gap-20 items-center justify-center mt-10 flex-wrap"> <svg viewBox="0 0 24 24" class="h-8 md:h-12" astro-icon="simple-icons:react"><path fill="currentColor" d="M14.23 12.004a2.236 2.236 0 0 1-2.235 2.236 2.236 2.236 0 0 1-2.236-2.236 2.236 2.236 0 0 1 2.235-2.236 2.236 2.236 0 0 1 2.236 2.236zm2.648-10.69c-1.346 0-3.107.96-4.888 2.622-1.78-1.653-3.542-2.602-4.887-2.602-.41 0-.783.093-1.106.278-1.375.793-1.683 3.264-.973 6.365C1.98 8.917 0 10.42 0 12.004c0 1.59 1.99 3.097 5.043 4.03-.704 3.113-.39 5.588.988 6.38.32.187.69.275 1.102.275 1.345 0 3.107-.96 4.888-2.624 1.78 1.654 3.542 2.603 4.887 2.603.41 0 .783-.09 1.106-.275 1.374-.792 1.683-3.263.973-6.365C22.02 15.096 24 13.59 24 12.004c0-1.59-1.99-3.097-5.043-4.032.704-3.11.39-5.587-.988-6.38a2.167 2.167 0 0 0-1.092-.278zm-.005 1.09v.006c.225 0 .406.044.558.127.666.382.955 1.835.73 3.704-.054.46-.142.945-.25 1.44a23.476 23.476 0 0 0-3.107-.534A23.892 23.892 0 0 0 12.769 4.7c1.592-1.48 3.087-2.292 4.105-2.295zm-9.77.02c1.012 0 2.514.808 4.11 2.28-.686.72-1.37 1.537-2.02 2.442a22.73 22.73 0 0 0-3.113.538 15.02 15.02 0 0 1-.254-1.42c-.23-1.868.054-3.32.714-3.707.19-.09.4-.127.563-.132zm4.882 3.05c.455.468.91.992 1.36 1.564-.44-.02-.89-.034-1.345-.034-.46 0-.915.01-1.36.034.44-.572.895-1.096 1.345-1.565zM12 8.1c.74 0 1.477.034 2.202.093.406.582.802 1.203 1.183 1.86.372.64.71 1.29 1.018 1.946-.308.655-.646 1.31-1.013 1.95-.38.66-.773 1.288-1.18 1.87a25.64 25.64 0 0 1-4.412.005 26.64 26.64 0 0 1-1.183-1.86c-.372-.64-.71-1.29-1.018-1.946a25.17 25.17 0 0 1 1.013-1.954c.38-.66.773-1.286 1.18-1.868A25.245 25.245 0 0 1 12 8.098zm-3.635.254c-.24.377-.48.763-.704 1.16-.225.39-.435.782-.635 1.174-.265-.656-.49-1.31-.676-1.947.64-.15 1.315-.283 2.015-.386zm7.26 0c.695.103 1.365.23 2.006.387-.18.632-.405 1.282-.66 1.933a25.952 25.952 0 0 0-1.345-2.32zm3.063.675c.484.15.944.317 1.375.498 1.732.74 2.852 1.708 2.852 2.476-.005.768-1.125 1.74-2.857 2.475-.42.18-.88.342-1.355.493a23.966 23.966 0 0 0-1.1-2.98c.45-1.017.81-2.01 1.085-2.964zm-13.395.004c.278.96.645 1.957 1.1 2.98a23.142 23.142 0 0 0-1.086 2.964c-.484-.15-.944-.318-1.37-.5-1.732-.737-2.852-1.706-2.852-2.474 0-.768 1.12-1.742 2.852-2.476.42-.18.88-.342 1.356-.494zm11.678 4.28c.265.657.49 1.312.676 1.948-.64.157-1.316.29-2.016.39a25.819 25.819 0 0 0 1.341-2.338zm-9.945.02c.2.392.41.783.64 1.175.23.39.465.772.705 1.143a22.005 22.005 0 0 1-2.006-.386c.18-.63.406-1.282.66-1.933zM17.92 16.32c.112.493.2.968.254 1.423.23 1.868-.054 3.32-.714 3.708-.147.09-.338.128-.563.128-1.012 0-2.514-.807-4.11-2.28.686-.72 1.37-1.536 2.02-2.44 1.107-.118 2.154-.3 3.113-.54zm-11.83.01c.96.234 2.006.415 3.107.532.66.905 1.345 1.727 2.035 2.446-1.595 1.483-3.092 2.295-4.11 2.295a1.185 1.185 0 0 1-.553-.132c-.666-.38-.955-1.834-.73-3.703.054-.46.142-.944.25-1.438zm4.56.64c.44.02.89.034 1.345.034.46 0 .915-.01 1.36-.034-.44.572-.895 1.095-1.345 1.565-.455-.47-.91-.993-1.36-1.565z"/></svg> <svg viewBox="0 0 24 24" class="h-8 md:h-12" astro-icon="simple-icons:vuedotjs"><path fill="currentColor" d="M24 1.61h-9.94L12 5.16 9.94 1.61H0l12 20.78zM12 14.08 5.16 2.23h4.43L12 6.41l2.41-4.18h4.43z"/></svg> <svg viewBox="0 0 24 24" class="h-8 md:h-12" astro-icon="simple-icons:javascript"><path fill="currentColor" d="M0 0h24v24H0V0zm22.034 18.276c-.175-1.095-.888-2.015-3.003-2.873-.736-.345-1.554-.585-1.797-1.14-.091-.33-.105-.51-.046-.705.15-.646.915-.84 1.515-.66.39.12.75.42.976.9 1.034-.676 1.034-.676 1.755-1.125-.27-.42-.404-.601-.586-.78-.63-.705-1.469-1.065-2.834-1.034l-.705.089c-.676.165-1.32.525-1.71 1.005-1.14 1.291-.811 3.541.569 4.471 1.365 1.02 3.361 1.244 3.616 2.205.24 1.17-.87 1.545-1.966 1.41-.811-.18-1.26-.586-1.755-1.336l-1.83 1.051c.21.48.45.689.81 1.109 1.74 1.756 6.09 1.666 6.871-1.004.029-.09.24-.705.074-1.65l.046.067zm-8.983-7.245h-2.248c0 1.938-.009 3.864-.009 5.805 0 1.232.063 2.363-.138 2.711-.33.689-1.18.601-1.566.48-.396-.196-.597-.466-.83-.855-.063-.105-.11-.196-.127-.196l-1.825 1.125c.305.63.75 1.172 1.324 1.517.855.51 2.004.675 3.207.405.783-.226 1.458-.691 1.811-1.411.51-.93.402-2.07.397-3.346.012-2.054 0-4.109 0-6.179l.004-.056z"/></svg> <svg viewBox="0 0 24 24" class="h-8 md:h-12" astro-icon="simple-icons:ruby"><path fill="currentColor" d="M20.156.083c3.033.525 3.893 2.598 3.829 4.77L24 4.822 22.635 22.71 4.89 23.926h.016C3.433 23.864.15 23.729 0 19.139l1.645-3 2.819 6.586.503 1.172 2.805-9.144-.03.007.016-.03 9.255 2.956-1.396-5.431-.99-3.9 8.82-.569-.615-.51L16.5 2.114 20.159.073l-.003.01zM0 19.089zM5.13 5.073c3.561-3.533 8.157-5.621 9.922-3.84 1.762 1.777-.105 6.105-3.673 9.636-3.563 3.532-8.103 5.734-9.864 3.957-1.766-1.777.045-6.217 3.612-9.75l.003-.003z"/></svg> <svg viewBox="0 0 24 24" class="h-8 md:h-12" astro-icon="simple-icons:rubyonrails"><path fill="currentColor" d="M7.523 7.781c-.187 0-.382.011-.582.035l.116.358a5.15 5.15 0 0 1 .527-.024h.06l-.12-.369zm2.315.358-.024.4c.2.067.394.138.588.217l.026-.404c-.055-.03-.208-.104-.59-.213zm-4.988.23a9.597 9.597 0 0 0-.473.26l.28.426c.157-.097.308-.19.466-.268L4.85 8.37zm2.89.022a5.602 5.602 0 0 0-.654.027c-.443.04-.909.169-1.38.375-1.418.618-2.878 1.918-3.833 3.51-.955 1.591-1.291 3-1.4 3.603-.037.202-.05.313-.05.313h4.79s-.057-.26-.096-.678a8.18 8.18 0 0 1-.033-.732c0-.55.055-1.203.244-1.858a4.718 4.718 0 0 1 .393-.969c.17-.314.381-.618.646-.894s.584-.525.963-.736c.248-.12.698-.365 1.346-.489.216-.041.453-.07.713-.076.26-.005.542.012.845.06.606.097 1.298.32 2.075.74.388.211.798.47 1.228.788.11-.09.211-.162.211-.162s-.196-.197-.547-.486c-.35-.29-.853-.672-1.467-1.043a10.83 10.83 0 0 0-.998-.538 8.852 8.852 0 0 0-1.129-.44 7.48 7.48 0 0 0-1.226-.27 6.048 6.048 0 0 0-.64-.045zm2.086 1.65-.023.383c.2.006.4.03.6.072l.025-.375a4.32 4.32 0 0 0-.602-.08zm-1.418.146a4.435 4.435 0 0 0-.533.194l.139.418a3.69 3.69 0 0 1 .527-.211l-.133-.4zm-6.008.024c-.157.151-.31.303-.449.455l.467.4c.127-.163.267-.327.412-.478l-.43-.377zm4.34.898c-.14.128-.266.267-.375.407l.291.435c.103-.151.224-.29.358-.43l-.274-.412zm.989.787v4.323h1.164v-1.043L9.9 16.219h1.721l-1.351-1.364s1.06-.09 1.06-1.46c0-1.37-1.285-1.499-1.285-1.499H7.729zm5.292.032c-.842 0-1.126.763-1.126 1.127v3.164h1.181v-.758h1.11v.758h1.146v-3.164c0-.922-.838-1.127-1.129-1.127h-1.182zm2.85 0v4.29h1.23v-4.29h-1.23zm1.733 0v4.291h2.88v-1.11h-1.656v-3.181h-1.224zm4.359 0c-.485 0-1.133.399-1.133 1.144v.383c0 .746.642 1.127 1.133 1.127 1.364.006-.327 0 .933 0v.533l-2.005.006v1.098h1.982c.406 0 1.103-.297 1.127-1.127v-.424c0-.71-.581-1.129-1.127-1.129h-.988v-.508h1.957v-1.103h-1.88zM5.668 12.8a5.75 5.75 0 0 0-.182.666l.49.388c.025-.236.069-.472.13-.709l-.438-.345zm7.771.15h.407c.327 0 .334.236.334.236v1.05h-1.11v-1.05s0-.236.37-.236zm-4.546.031h.933s.262.097.262.49c0 .395-.268.499-.268.499h-.927v-.989zm-8.59.061c-.115.26-.242.563-.303.727l.697.255c.08-.206.206-.504.303-.728l-.697-.254zm5.092 1.963c.012.321.043.584.074.765l.726.26a8.003 8.003 0 0 1-.144-.787l-.656-.238z"/></svg> <svg viewBox="0 0 24 24" class="h-8 md:h-12" astro-icon="simple-icons:vercel"><path fill="currentColor" d="M24 22.525H0l12-21.05 12 21.05z"/></svg> <svg viewBox="0 0 24 24" class="h-8 md:h-12" astro-icon="simple-icons:astro"><path fill="currentColor" d="M16.074 16.86c-.72.616-2.157 1.035-3.812 1.035-2.032 0-3.735-.632-4.187-1.483-.161.488-.198 1.046-.198 1.402 0 0-.106 1.75 1.111 2.968 0-.632.513-1.145 1.145-1.145 1.083 0 1.082.945 1.081 1.712v.069c0 1.164.711 2.161 1.723 2.582a2.347 2.347 0 0 1-.236-1.029c0-1.11.652-1.523 1.41-2.003.602-.383 1.272-.807 1.733-1.66a3.129 3.129 0 0 0 .378-1.494 3.14 3.14 0 0 0-.148-.954zM15.551.6c.196.244.296.572.496 1.229l4.368 14.347a18.18 18.18 0 0 0-5.222-1.768L12.35 4.8a.37.37 0 0 0-.71.002l-2.81 9.603a18.175 18.175 0 0 0-5.245 1.771L7.974 1.827c.2-.656.3-.984.497-1.227a1.613 1.613 0 0 1 .654-.484C9.415 0 9.757 0 10.443 0h3.135c.686 0 1.03 0 1.32.117A1.614 1.614 0 0 1 15.55.6z"/></svg> <svg viewBox="0 0 24 24" class="h-8 md:h-12" astro-icon="simple-icons:python"><path fill="currentColor" d="m14.25.18.9.2.73.26.59.3.45.32.34.34.25.34.16.33.1.3.04.26.02.2-.01.13V8.5l-.05.63-.13.55-.21.46-.26.38-.3.31-.33.25-.35.19-.35.14-.33.1-.3.07-.26.04-.21.02H8.77l-.69.05-.59.14-.5.22-.41.27-.33.32-.27.35-.2.36-.15.37-.1.35-.07.32-.04.27-.02.21v3.06H3.17l-.21-.03-.28-.07-.32-.12-.35-.18-.36-.26-.36-.36-.35-.46-.32-.59-.28-.73-.21-.88-.14-1.05-.05-1.23.06-1.22.16-1.04.24-.87.32-.71.36-.57.4-.44.42-.33.42-.24.4-.16.36-.1.32-.05.24-.01h.16l.06.01h8.16v-.83H6.18l-.01-2.75-.02-.37.05-.34.11-.31.17-.28.25-.26.31-.23.38-.2.44-.18.51-.15.58-.12.64-.1.71-.06.77-.04.84-.02 1.27.05zm-6.3 1.98-.23.33-.08.41.08.41.23.34.33.22.41.09.41-.09.33-.22.23-.34.08-.41-.08-.41-.23-.33-.33-.22-.41-.09-.41.09zm13.09 3.95.28.06.32.12.35.18.36.27.36.35.35.47.32.59.28.73.21.88.14 1.04.05 1.23-.06 1.23-.16 1.04-.24.86-.32.71-.36.57-.4.45-.42.33-.42.24-.4.16-.36.09-.32.05-.24.02-.16-.01h-8.22v.82h5.84l.01 2.76.02.36-.05.34-.11.31-.17.29-.25.25-.31.24-.38.2-.44.17-.51.15-.58.13-.64.09-.71.07-.77.04-.84.01-1.27-.04-1.07-.14-.9-.2-.73-.25-.59-.3-.45-.33-.34-.34-.25-.34-.16-.33-.1-.3-.04-.25-.02-.2.01-.13v-5.34l.05-.64.13-.54.21-.46.26-.38.3-.32.33-.24.35-.2.35-.14.33-.1.3-.06.26-.04.21-.02.13-.01h5.84l.69-.05.59-.14.5-.21.41-.28.33-.32.27-.35.2-.36.15-.36.1-.35.07-.32.04-.28.02-.21V6.07h2.09l.14.01zm-6.47 14.25-.23.33-.08.41.08.41.23.33.33.23.41.08.41-.08.33-.23.23-.33.08-.41-.08-.41-.23-.33-.33-.23-.41-.08-.41.08z"/></svg> </div> <div class="flex gap-10 md:gap-20 items-center justify-center mt-10 flex-wrap"> <svg viewBox="0 0 24 24" class="h-8 md:h-12" astro-icon="simple-icons:typescript"><path fill="currentColor" d="M1.125 0C.502 0 0 .502 0 1.125v21.75C0 23.498.502 24 1.125 24h21.75c.623 0 1.125-.502 1.125-1.125V1.125C24 .502 23.498 0 22.875 0zm17.363 9.75c.612 0 1.154.037 1.627.111a6.38 6.38 0 0 1 1.306.34v2.458a3.95 3.95 0 0 0-.643-.361 5.093 5.093 0 0 0-.717-.26 5.453 5.453 0 0 0-1.426-.2c-.3 0-.573.028-.819.086a2.1 2.1 0 0 0-.623.242c-.17.104-.3.229-.393.374a.888.888 0 0 0-.14.49c0 .196.053.373.156.529.104.156.252.304.443.444s.423.276.696.41c.273.135.582.274.926.416.47.197.892.407 1.266.628.374.222.695.473.963.753.268.279.472.598.614.957.142.359.214.776.214 1.253 0 .657-.125 1.21-.373 1.656a3.033 3.033 0 0 1-1.012 1.085 4.38 4.38 0 0 1-1.487.596c-.566.12-1.163.18-1.79.18a9.916 9.916 0 0 1-1.84-.164 5.544 5.544 0 0 1-1.512-.493v-2.63a5.033 5.033 0 0 0 3.237 1.2c.333 0 .624-.03.872-.09.249-.06.456-.144.623-.25.166-.108.29-.234.373-.38a1.023 1.023 0 0 0-.074-1.089 2.12 2.12 0 0 0-.537-.5 5.597 5.597 0 0 0-.807-.444 27.72 27.72 0 0 0-1.007-.436c-.918-.383-1.602-.852-2.053-1.405-.45-.553-.676-1.222-.676-2.005 0-.614.123-1.141.369-1.582.246-.441.58-.804 1.004-1.089a4.494 4.494 0 0 1 1.47-.629 7.536 7.536 0 0 1 1.77-.201zm-15.113.188h9.563v2.166H9.506v9.646H6.789v-9.646H3.375z"/></svg> <svg viewBox="0 0 24 24" class="h-8 md:h-12" astro-icon="simple-icons:mongodb"><path fill="currentColor" d="M17.193 9.555c-1.264-5.58-4.252-7.414-4.573-8.115-.28-.394-.53-.954-.735-1.44-.036.495-.055.685-.523 1.184-.723.566-4.438 3.682-4.74 10.02-.282 5.912 4.27 9.435 4.888 9.884l.07.05A73.49 73.49 0 0 1 11.91 24h.481a28.48 28.48 0 0 1 .51-3.07c.417-.296.604-.463.85-.693a11.342 11.342 0 0 0 3.639-8.464c.01-.814-.103-1.662-.197-2.218zm-5.336 8.195s0-8.291.275-8.29c.213 0 .49 10.695.49 10.695-.381-.045-.765-1.76-.765-2.405z"/></svg> <svg viewBox="0 0 24 24" class="h-8 md:h-12" astro-icon="simple-icons:confluence"><path fill="currentColor" d="M.87 18.257c-.248.382-.53.875-.763 1.245a.764.764 0 0 0 .255 1.04l4.965 3.054a.764.764 0 0 0 1.058-.26c.199-.332.454-.763.733-1.221 1.967-3.247 3.945-2.853 7.508-1.146l4.957 2.337a.764.764 0 0 0 1.028-.382l2.364-5.346a.764.764 0 0 0-.382-1 599.851 599.851 0 0 1-4.965-2.361C10.911 10.97 5.224 11.185.87 18.257zM23.131 5.743c.249-.405.531-.875.764-1.25a.764.764 0 0 0-.256-1.034L18.675.404a.764.764 0 0 0-1.058.26 66.14 66.14 0 0 1-.734 1.225c-1.966 3.246-3.945 2.85-7.508 1.146L4.437.694a.764.764 0 0 0-1.027.382L1.046 6.422a.764.764 0 0 0 .382 1c1.039.49 3.105 1.467 4.965 2.361 6.698 3.246 12.392 3.029 16.738-4.04z"/></svg> <svg viewBox="0 0 24 24" class="h-8 md:h-12" astro-icon="simple-icons:netlify"><path fill="currentColor" d="m17.388 8.329-.01-.004c-.004-.002-.01-.004-.014-.008a.069.069 0 0 1-.017-.059L17.83 5.3l2.27 2.27-2.36 1.004a.052.052 0 0 1-.02.004h-.01a.065.065 0 0 1-.013-.01 1.074 1.074 0 0 0-.31-.24zm3.29-.18 2.427 2.425c.504.505.756.757.848 1.048a1.2 1.2 0 0 1 .034.131l-5.798-2.455a.456.456 0 0 0-.01-.004c-.023-.01-.05-.02-.05-.044 0-.024.028-.035.051-.044l.008-.004zm3.21 4.383c-.125.235-.37.48-.783.893L20.37 16.16l-3.538-.737-.018-.004c-.032-.005-.065-.01-.065-.039a1.068 1.068 0 0 0-.41-.746c-.014-.015-.01-.037-.006-.058l.001-.009.666-4.085.002-.013c.004-.032.01-.068.038-.068a1.083 1.083 0 0 0 .726-.416.055.055 0 0 1 .017-.017c.02-.01.043 0 .064.009l6.04 2.555zm-4.147 4.257-4.498 4.498.77-4.732.001-.007a.083.083 0 0 1 .004-.018c.006-.015.023-.021.038-.027l.008-.003a1.158 1.158 0 0 0 .435-.324c.015-.018.033-.035.056-.038a.056.056 0 0 1 .018 0l3.168.651zm-5.45 5.45-.507.507-5.605-8.101a.265.265 0 0 0-.006-.009c-.009-.012-.018-.024-.016-.038 0-.01.006-.018.013-.026l.007-.008c.017-.025.03-.05.047-.077l.012-.022.002-.002c.009-.015.017-.03.032-.037.013-.007.031-.004.046 0l6.21 1.28a.103.103 0 0 1 .047.02c.008.008.01.017.012.027a1.1 1.1 0 0 0 .643.736c.018.009.01.028.002.049a.149.149 0 0 0-.01.028l-.929 5.673zm-1.059 1.058c-.373.37-.594.566-.843.645a1.252 1.252 0 0 1-.755 0c-.291-.093-.544-.345-1.048-.849l-5.629-5.629 1.47-2.28a.094.094 0 0 1 .026-.03c.015-.01.038-.006.057 0a1.524 1.524 0 0 0 1.025-.052c.017-.006.034-.01.047.002a.119.119 0 0 1 .017.02l5.633 8.174zm-8.817-6.376L3.123 15.63l2.55-1.088a.053.053 0 0 1 .021-.004c.021 0 .034.021.045.04a1.821 1.821 0 0 0 .081.116l.009.01c.007.01.002.02-.005.03l-1.409 2.187zM2.552 15.06.918 13.425a9.457 9.457 0 0 1-.62-.653l4.968 1.03a.526.526 0 0 0 .019.003c.03.005.064.011.064.04 0 .031-.037.046-.068.057l-.014.007zM.013 11.932a1.252 1.252 0 0 1 .056-.31c.093-.291.345-.543.85-1.048l2.09-2.09a1361.72 1361.72 0 0 0 2.895 4.185c.017.023.036.048.017.067a1.74 1.74 0 0 0-.248.33.1.1 0 0 1-.03.039c-.009.005-.018.003-.027.001h-.001L.013 11.931zm3.555-4.008 2.811-2.81c.265.115 1.226.521 2.086.884.651.276 1.244.526 1.43.607.02.008.037.015.045.034.005.011.002.026 0 .038a1.254 1.254 0 0 0 .327 1.144c.019.019 0 .046-.016.069l-.009.013-2.854 4.42a.088.088 0 0 1-.027.032c-.015.01-.036.005-.054 0a1.423 1.423 0 0 0-.34-.046c-.103 0-.214.02-.327.04-.013.002-.024.004-.034-.003a.131.131 0 0 1-.028-.032zm3.38-3.379L10.585.906c.504-.503.756-.756 1.048-.848a1.252 1.252 0 0 1 .755 0c.292.092.544.345 1.048.848l.789.79-2.589 4.008a.097.097 0 0 1-.025.03c-.016.01-.038.006-.057 0a1.313 1.313 0 0 0-1.201.231c-.017.018-.042.008-.064-.002-.338-.147-2.967-1.258-3.343-1.417zm7.827-2.3 2.39 2.39-.576 3.566v.01a.085.085 0 0 1-.005.023c-.006.013-.019.015-.031.019a1.145 1.145 0 0 0-.343.17.096.096 0 0 0-.013.011c-.007.008-.014.015-.025.016a.071.071 0 0 1-.027-.004l-3.641-1.548-.007-.003c-.024-.01-.051-.02-.051-.044a1.376 1.376 0 0 0-.194-.573c-.018-.029-.037-.059-.022-.088zM12.314 7.63l3.414 1.446c.019.009.04.017.047.037a.066.066 0 0 1 0 .035.848.848 0 0 0-.018.165v.096c0 .023-.025.033-.047.043l-.007.002c-.541.231-7.593 3.238-7.603 3.238-.011 0-.022 0-.033-.01-.019-.02 0-.045.017-.07a.476.476 0 0 0 .009-.012l2.805-4.344.005-.007c.016-.026.035-.056.065-.056l.028.004c.064.01.12.017.177.017.426 0 .82-.207 1.058-.561a.1.1 0 0 1 .022-.025c.017-.013.042-.006.061.002zm-3.91 5.75 7.687-3.278s.011 0 .022.01c.042.042.077.07.112.097l.017.01c.015.009.031.019.032.035l-.001.016-.659 4.045-.002.016c-.004.031-.009.067-.038.067a1.082 1.082 0 0 0-.86.53l-.003.005c-.009.014-.017.028-.031.036-.013.006-.03.003-.044 0l-6.13-1.264c-.006-.001-.095-.325-.102-.326z"/></svg> <svg viewBox="0 0 24 24" class="h-8 md:h-12" astro-icon="simple-icons:git"><path fill="currentColor" d="M23.546 10.93 13.067.452a1.55 1.55 0 0 0-2.188 0L8.708 2.627l2.76 2.76a1.838 1.838 0 0 1 2.327 2.341l2.658 2.66a1.838 1.838 0 0 1 1.9 3.039 1.837 1.837 0 0 1-2.6 0 1.846 1.846 0 0 1-.404-1.996L12.86 8.955v6.525c.176.086.342.203.488.348a1.848 1.848 0 0 1 0 2.6 1.844 1.844 0 0 1-2.609 0 1.834 1.834 0 0 1 0-2.598c.182-.18.387-.316.605-.406V8.835a1.834 1.834 0 0 1-.996-2.41L7.636 3.7.45 10.881c-.6.605-.6 1.584 0 2.189l10.48 10.477a1.545 1.545 0 0 0 2.186 0l10.43-10.43a1.544 1.544 0 0 0 0-2.187"/></svg> <svg viewBox="0 0 24 24" class="h-8 md:h-12" astro-icon="simple-icons:node-dot-js"><path fill="currentColor" d="M11.998 24c-.321 0-.641-.084-.922-.247L8.14 22.016c-.438-.245-.224-.332-.08-.383.585-.203.703-.25 1.328-.604.065-.037.151-.023.218.017l2.256 1.339a.29.29 0 0 0 .272 0l8.795-5.076a.277.277 0 0 0 .134-.238V6.921a.283.283 0 0 0-.137-.242l-8.791-5.072a.278.278 0 0 0-.271 0L3.075 6.68a.284.284 0 0 0-.139.241v10.15a.27.27 0 0 0 .139.235l2.409 1.392c1.307.654 2.108-.116 2.108-.89V7.787c0-.142.114-.253.256-.253h1.115c.139 0 .255.112.255.253v10.021c0 1.745-.95 2.745-2.604 2.745-.508 0-.909 0-2.026-.551L2.28 18.675a1.856 1.856 0 0 1-.922-1.604V6.921c0-.659.353-1.275.922-1.603L11.075.236a1.925 1.925 0 0 1 1.848 0l8.794 5.082c.57.329.924.944.924 1.603v10.15a1.86 1.86 0 0 1-.924 1.604l-8.794 5.078c-.28.163-.599.247-.925.247zm7.101-10.007c0-1.9-1.284-2.406-3.987-2.763-2.731-.361-3.009-.548-3.009-1.187 0-.528.235-1.233 2.258-1.233 1.807 0 2.473.389 2.747 1.607a.254.254 0 0 0 .247.199h1.141a.26.26 0 0 0 .186-.081.257.257 0 0 0 .067-.196c-.177-2.098-1.571-3.076-4.388-3.076-2.508 0-4.004 1.058-4.004 2.833 0 1.925 1.488 2.457 3.895 2.695 2.88.282 3.103.703 3.103 1.269 0 .983-.789 1.402-2.642 1.402-2.327 0-2.839-.584-3.011-1.742a.255.255 0 0 0-.253-.215h-1.137a.252.252 0 0 0-.254.253c0 1.482.806 3.248 4.655 3.248 2.788.001 4.386-1.096 4.386-3.013z"/></svg> <svg viewBox="0 0 24 24" class="h-8 md:h-12" astro-icon="simple-icons:asana"><path fill="currentColor" d="M18.78 12.653a5.22 5.22 0 1 0 0 10.44 5.22 5.22 0 0 0 0-10.44zm-13.56 0a5.22 5.22 0 1 0 .001 10.439 5.22 5.22 0 0 0-.001-10.439zm12-6.525a5.22 5.22 0 1 1-10.44 0 5.22 5.22 0 0 1 10.44 0z"/></svg> <svg viewBox="0 0 24 24" class="h-8 md:h-12" astro-icon="simple-icons:figma"><path fill="currentColor" d="M15.852 8.981h-4.588V0h4.588c2.476 0 4.49 2.014 4.49 4.49s-2.014 4.491-4.49 4.491zM12.735 7.51h3.117c1.665 0 3.019-1.355 3.019-3.019s-1.355-3.019-3.019-3.019h-3.117V7.51zm0 1.471H8.148c-2.476 0-4.49-2.014-4.49-4.49S5.672 0 8.148 0h4.588v8.981zm-4.587-7.51c-1.665 0-3.019 1.355-3.019 3.019s1.354 3.02 3.019 3.02h3.117V1.471H8.148zm4.587 15.019H8.148c-2.476 0-4.49-2.014-4.49-4.49s2.014-4.49 4.49-4.49h4.588v8.98zM8.148 8.981c-1.665 0-3.019 1.355-3.019 3.019s1.355 3.019 3.019 3.019h3.117V8.981H8.148zM8.172 24c-2.489 0-4.515-2.014-4.515-4.49s2.014-4.49 4.49-4.49h4.588v4.441c0 2.503-2.047 4.539-4.563 4.539zm-.024-7.51a3.023 3.023 0 0 0-3.019 3.019c0 1.665 1.365 3.019 3.044 3.019 1.705 0 3.093-1.376 3.093-3.068v-2.97H8.148zm7.704 0h-.098c-2.476 0-4.49-2.014-4.49-4.49s2.014-4.49 4.49-4.49h.098c2.476 0 4.49 2.014 4.49 4.49s-2.014 4.49-4.49 4.49zm-.097-7.509c-1.665 0-3.019 1.355-3.019 3.019s1.355 3.019 3.019 3.019h.098c1.665 0 3.019-1.355 3.019-3.019s-1.355-3.019-3.019-3.019h-.098z"/></svg> </div> </div>   </div>  <footer class="my-20 mb-5 fixed-footer"> <p class="text-center text-sm text-slate-500">
+Copyright © 2024 <a href="https://twitter.com/nerajno" target="_blank" rel="noopener">Nerajno. All rights reserved.
+</a></p><a href="https://twitter.com/nerajno" target="_blank" rel="noopener"></a><p class="text-center text-xs text-slate-500 mt-1"><a href="https://twitter.com/nerajno" target="_blank" rel="noopener">
+Configured and modified by
+</a><a href="https://twitter.com/nerajno" target="_blank" rel="noopener" class="hover:underline">me</a>, but the source is
+<a href="https://web3templates.com" target="_blank" rel="noopener" class="hover:underline">
+here.
+</a> </p> </footer>  </body> </html>
