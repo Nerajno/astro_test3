@@ -286,7 +286,3 @@ Remember, your journey in tech is uniquely yours. Embrace the challenges, celebr
 ### Disclaimer
 
 This was originally published on [dev.to](https://dev.to/nerajno/11-things-learnt-from-being-on-board-from-11-months-7d2) in October 2024. I am currently migrating my main source of publication to a personal self-hosted blog (developer growth).
-
-
-
-
