@@ -14,7 +14,7 @@ tags: [mentorship, careerdevelopment, softwareengineering, developer, frontend]
 ## Intro
 Mentorship can be **extremely** challenging to both parties if not done well. It can be defined as a relationship between a more experienced and knowledgeable person, the mentor, and a less experienced person, the mentor mentee, in which the mentor provides guidance, support, and advice to help the mentee develop personally and professionally.A mentor is an experienced individual who willingly shares their knowledge, skills, and expertise with a less experienced person (the mentee) to help them grow and achieve their goals. A mentor should acts as a advisor, role model, and source of inspiration for the mentee.A mentee, on the other hand, is an individual who seeks guidance, support, and knowledge to enhance their skills, knowledge, and personal growth. The mentee actively participates in the mentoring relationship and is responsible for their own development.
 
-## Five Things A Mentee Should Considering Doing: 🧐
+## Five Things A Mentee Should Consider Doing: 🧐
 
 
 ### Set Clear Goals
@@ -32,7 +32,7 @@ Establish open and honest communication with your mentor. Clearly articulate you
 ### Follow Through
 Take the advice and guidance provided by your mentor seriously and implement it in your life or work. Show commitment and dedication to your goals and strive to make progress. Regularly review your progress with your mentor and adjust your actions if necessary.
 
-## Three Things A Mentor Should Considering Doing: 🧐
+## Three Things A Mentor Should Consider Doing: 🧐
 
 ### Provide Guidance and Support
  Offer guidance, wisdom, and expertise to the mentee based on their own experiences. Help the mentee navigate challenges, make informed decisions, and overcome obstacles. Be available to provide support and encouragement when needed.
@@ -40,7 +40,7 @@ Take the advice and guidance provided by your mentor seriously and implement it 
 ### Share Knowledge and Experience
  Share your knowledge, skills, and experiences with the mentee. Offer insights, lessons learned, and practical advice related to their goals and areas of interest. Provide resources, tools, and connections that can help the mentee in their development.
 
-###Foster Growth and Independence
+### Foster Growth and Independence
 Encourage the mentee's personal and professional growth by challenging them to step out of their comfort zone and explore new opportunities. Help them identify their strengths and areas for improvement. Empower the mentee to take ownership of their development and make decisions for themselves.
 
 ### Summary
@@ -61,4 +61,4 @@ Nerando is a software developer with full-stack training, team building, and a d
 
 
 ### Disclaimer
-This was originally published on [dev.to](https://dev.to/nerajno/how-to-be-mentored-2nmh) in Now 2023. I am currently migrating my main source of publication to a personal self-hosted blog (developer growth).
+This was originally published on [dev.to](https://dev.to/nerajno/how-to-be-mentored-2nmh) in November 2023. I am currently migrating my main source of publication to a personal self-hosted blog (developer growth).
