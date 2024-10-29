@@ -6,7 +6,7 @@ image: {
     src: "https://media2.dev.to/dynamic/image/width=1000,height=420,fit=cover,gravity=auto,format=auto/https%3A%2F%2Fdev-to-uploads.s3.amazonaws.com%2Fuploads%2Farticles%2Fwjrddekgxgiwzxro6wjf.jpeg",
     alt: "The lobby at Refactr Tech Conference in Atlanta in 2023.",
 }
-publishDate: "2023-05-03 12:00 || May 3, 2023"
+publishDate: "2023-05-03 12:00"
 category: "How-To-Do, Conference, Learning"
 tags: [beginners, career, learning, community]
 ---

@@ -61,4 +61,4 @@ Nerando is a software developer with full-stack training, team building, and a d
 
 
 ### Disclaimer
-This was originally published on [dev.to](https://dev.to/nerajno/how-to-be-mentored-2nmh) in May 2023. I am currently migrating my main source of publication to a personal self-hosted blog (developer growth).
+This was originally published on [dev.to](https://dev.to/nerajno/how-to-be-mentored-2nmh) in Now 2023. I am currently migrating my main source of publication to a personal self-hosted blog (developer growth).
