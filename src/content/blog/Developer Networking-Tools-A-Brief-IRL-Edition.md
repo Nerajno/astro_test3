@@ -3,8 +3,7 @@ draft: false
 title: "Developer Networking Tools : A Brief IRL Edition"
 snippet: "Developers can build their professional network using three unconventional tools: wearing tech-branded clothing, volunteering at events, and staying active in developer communities. These methods create natural opportunities to meet other developers and industry professionals without the awkwardness of traditional networking. The connections you make through these activities can lead to new job opportunities, mentorship, and professional growth."
 image: {
-    src: "https://media.giphy.com/media/KX5nwoDX97AtPvKBF6/giphy.gif)
-    ",
+    src: "https://images.pexels.com/photos/167259/pexels-photo-167259.jpeg",
     alt: "Networked Image"
 }
 publishDate: "2022-11-07 12:00"
