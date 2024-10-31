@@ -37,18 +37,19 @@ OK, now let's check why we should care for our README files since the first proj
 
 ### Lets take A Closer Look
 
-So lets examine how a good ReadMe makes all the difference in if you would use an open-source project. Look at this  [repo's]   (https://tinyurl.com/Helln0p3) ReadMe, how does it work, what does it look like…… nada, zilch, no details. Thus, therefore I am way less likely to use this repo or even learn from it.
+So lets examine how a good ReadMe makes all the difference in if you would use an open-source project. Look at this [repo's](https://tinyurl.com/Helln0p3) ReadMe, how does it work, what does it look like…… nada, zilch, no details. Thus, therefore I am way less likely to use this repo or even learn from it.
 
-This repo’s [ReadMe] (https://github.com/Nerajno/Weather-App) on the other hand give the perspective user a better idea of how the code works, what is it all about and how they can use it .
+This repo’s [ReadMe](https://github.com/Nerajno/Weather-App) on the other hand give the perspective user a better idea of how the code works, what is it all about and how they can use it .
 
 
 ![](https://thepracticaldev.s3.amazonaws.com/i/0c2w7xa7dh2gwv9n80md.jpg)
+
 ## Ok enough talk,  how do we do this….
 
 
 Below is an example of a good layout for a ReadMe citing the various sections and what they should contain.
 
-{% gist https://gist.github.com/Nerajno/b7cedaa74c7d39b12a847aeca11bb1b8 %}
+<Gist id="Nerajno/b7cedaa74c7d39b12a847aeca11bb1b8" />
 
 ## But how does it look ?
 

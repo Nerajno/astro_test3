@@ -12,9 +12,10 @@ const blogCollection = defineCollection({
       alt: z.string(),
     }),
     publishDate: z.string().transform(str => new Date(str)),
-    author: z.string().default('Astroship'),
+    author: z.string().default('@nerajno'),
     category: z.string(),
     tags: z.array(z.string()),
+    tweetIds: z.array(z.string()).optional(),
   }),
 });
 

@@ -35,7 +35,7 @@ Giving your time freely has untold benefits that can never be underestimated, as
 ![](https://blogmedia.evbstatic.com/wp-content/uploads/wpmulti/sites/3/2018/08/22091712/choose-conference-speakers.jpg)
 
 ### Conclusion
-Your job as a developer is to create and contribute, thus networking is a natural part of this skill set. Another thing to remember, the aim is to use these tools to spark conversation, which can be converted to connections. These connections created effectively, become two-way streets of information that should enhance your effectiveness as a developer to your community, your current company and yourself. This article came from an ideation session with @GantLaborde and me while talking in a **@virtualcoffee** session. I would appreciate any feedback or tips. Find me **“@nerajno”** if you would like to chat, ***my DMs are open***.
+Your job as a developer is to create and contribute, thus networking is a natural part of this skill set. Another thing to remember, the aim is to use these tools to spark conversation, which can be converted to connections. These connections created effectively, become two-way streets of information that should enhance your effectiveness as a developer to your community, your current company and yourself. This article came from an ideation session with **@GantLaborde** and me while talking in a **@virtualcoffee** session. I would appreciate any feedback or tips. Find me **“@nerajno”** if you would like to chat, ***my DMs are open***.
 
 
 ### Disclaimer

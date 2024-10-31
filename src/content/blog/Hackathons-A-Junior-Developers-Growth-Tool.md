@@ -49,7 +49,7 @@ Intense problem-solving environments like hackathons facilitate the creation of 
 
 ![Alt Text](https://thepracticaldev.s3.amazonaws.com/i/kqpa5k9kpnpf80mu080h.jpeg)
 
-#####You can read more about a more personal experience [here.](https://medium.com/paratransit-pal/paratransit-pal-won-40-000-at-at-ts-atlanta-civic-coding-challenge-and-gave-it-all-to-charity-30bba157d92d)
+##### You can read more about a more personal experience [here.](https://medium.com/paratransit-pal/paratransit-pal-won-40-000-at-at-ts-atlanta-civic-coding-challenge-and-gave-it-all-to-charity-30bba157d92d)
 
 
 ### Disclaimer

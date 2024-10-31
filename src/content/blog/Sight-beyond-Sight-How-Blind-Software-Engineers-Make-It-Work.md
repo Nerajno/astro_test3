@@ -17,7 +17,7 @@ tags: [Flatiron, FreeCodeCamp, developer, blogs]
 
 #### [Side Note](https://www.theguardian.com/music/2019/jan/04/beyonce-parkwood-entertainment-sued-over-website-accessibility)
 
-##A little history
+## A Little History
 ![](https://thepracticaldev.s3.amazonaws.com/i/kn31etzyy3gxuyj3f2hs.JPEG)
                             Jim Thatcher
 
@@ -28,7 +28,7 @@ Thus, He set out to solve this problem and came up with a solution([read about t
 
 
 
-##Meet — Florian Beijers
+# Meet — Florian Beijers
 
 ![](https://thepracticaldev.s3.amazonaws.com/i/7kv4u8jviezwj0zp2d9h.jpg)
 
@@ -51,14 +51,13 @@ A screen reader basically, at its most basic level — wait for it — reads the
 
 This is really all the adaptation a blind computer user needs. Using this program, I can do many things you probably wouldn’t imagine being able to do with your eyes closed, such as:
 
-  +Browsing the web using Firefox
-  +Writing up reports in Microsoft Word.
-  +Writing up snazzy blog posts.
-  +Recording, editing, mixing and publishing audio (My hobbies include
-   singing and making music).
-  +Using audio production apps like Reaper, Goldwave, Audacity and Sonar
-  +Coding websites and applications using Eclipse, (the ironically named)
-   Visual Studio, and good old NotePad++.
+   - Browsing the web using Firefox
+   - Writing up reports in Microsoft Word.
+   - Writing up snazzy blog posts.
+   - Recording, editing, mixing and publishing audio (My hobbies include singing and making music).
+   - Using audio production apps like Reaper, Goldwave, Audacity and Sonar
+   - Coding websites and applications using Eclipse, (the ironically named) Visual Studio, and good old NotePad++.
+
 The reason I’m naming all these mainstream technologies is to show you that I can use them just like people who aren’t ocularly challenged.
 
 If you’re writing the next big application, with a stunning UI and a great workflow, I humbly ask you to consider accessibility as part of the equation. In this day and age, there’s really no reason not to use the UI toolkits available. It’s a lot easier than you may think. Yes, these include the Android Activities, iOS NsViews and HTML5 widgets you may be thinking of.

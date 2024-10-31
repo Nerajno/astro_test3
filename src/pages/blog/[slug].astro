@@ -3,6 +3,8 @@ import { getCollection } from "astro:content";
 import Layout from "@layouts/Layout.astro";
 import Container from "@components/container.astro";
 import type { CollectionEntry } from 'astro:content';
+import Gist from 'astro-embed/components/Gist.astro';
+import { Tweet } from 'astro-embed';
 
 export const prerender = true;
 
@@ -73,6 +75,10 @@ try {
 
     <div class="mx-auto prose prose-lg mt-6 max-w-3xl">
       {Content && <Content />}
+      <!-- For embedding tweets -->
+      {entry.data.tweetIds?.map(id => (
+        <Tweet id={id} />
+    ))}
     </div>
     <div class="text-center mt-8">
       <a
