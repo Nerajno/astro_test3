@@ -42,24 +42,18 @@ const OUTPUT_MODES = {
 };
 
 // Get output mode from environment variable or fall back to hybrid
-const outputMode = process.env.ASTRO_OUTPUT_MODE ?? OUTPUT_MODES.HYBRID;
+const outputMode = process.env.ASTRO_OUTPUT_MODE;
+const validOutputMode = Object.values(OUTPUT_MODES).includes(outputMode)
+  ? outputMode
+  : OUTPUT_MODES.HYBRID;
 
-// Conditionally import the Vercel adapter
-let vercelAdapter;
-if (process.env.NODE_ENV === 'production' || process.env.VERCEL) {
-  vercelAdapter = () => import('@astrojs/vercel/serverless');
-}
-
-// Validate output mode
-const isValidOutputMode = Object.values(OUTPUT_MODES).includes(outputMode);
-if (!isValidOutputMode) {
+if (outputMode && !Object.values(OUTPUT_MODES).includes(outputMode)) {
   console.warn(`Invalid output mode "${outputMode}". Falling back to hybrid mode.`);
 }
 
-// https://astro.build/config
 export default defineConfig({
   site: "https://astro-portfolio-v3-dusky.vercel.app",
-  output: isValidOutputMode ? outputMode : OUTPUT_MODES.HYBRID,
+  output: validOutputMode,
   adapter: vercel(),
   integrations: [tailwind(), mdx(), sitemap()],
   image: {
