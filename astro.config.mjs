@@ -34,26 +34,20 @@ import sitemap from "@astrojs/sitemap";
 import { remarkReadingTime } from './remark-reading-time.mjs';
 import vercel from "@astrojs/vercel/serverless";
 
-// Define possible output modes
 const OUTPUT_MODES = {
   STATIC: 'static',
   HYBRID: 'hybrid',
   SERVER: 'server'
 };
 
-// Get output mode from environment variable or fall back to hybrid
-const outputMode = process.env.ASTRO_OUTPUT_MODE;
-const validOutputMode = Object.values(OUTPUT_MODES).includes(outputMode)
-  ? outputMode
-  : OUTPUT_MODES.HYBRID;
-
-if (outputMode && !Object.values(OUTPUT_MODES).includes(outputMode)) {
+const outputMode = process.env.ASTRO_OUTPUT_MODE || OUTPUT_MODES.HYBRID;
+if (!Object.values(OUTPUT_MODES).includes(outputMode)) {
   console.warn(`Invalid output mode "${outputMode}". Falling back to hybrid mode.`);
 }
 
 export default defineConfig({
   site: "https://astro-portfolio-v3-dusky.vercel.app",
-  output: validOutputMode,
+  output: outputMode,
   adapter: vercel(),
   integrations: [tailwind(), mdx(), sitemap()],
   image: {
@@ -63,3 +57,4 @@ export default defineConfig({
     remarkPlugins: [remarkReadingTime],
   },
 });
+
