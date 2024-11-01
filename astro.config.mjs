@@ -26,13 +26,11 @@
 //   },
 // });
 
-
 import { defineConfig } from "astro/config";
 import tailwind from "@astrojs/tailwind";
 import mdx from "@astrojs/mdx";
 import sitemap from "@astrojs/sitemap";
 import { remarkReadingTime } from './remark-reading-time.mjs';
-import vercel from "@astrojs/vercel/serverless";
 
 const OUTPUT_MODES = {
   STATIC: 'static',
@@ -40,15 +38,23 @@ const OUTPUT_MODES = {
   SERVER: 'server'
 };
 
-const outputMode = process.env.ASTRO_OUTPUT_MODE || OUTPUT_MODES.HYBRID;
+const outputMode = process.env.ASTRO_OUTPUT_MODE || OUTPUT_MODES.STATIC;
 if (!Object.values(OUTPUT_MODES).includes(outputMode)) {
   console.warn(`Invalid output mode "${outputMode}". Falling back to hybrid mode.`);
+}
+
+let vercelAdapter;
+if (process.env.NODE_ENV === 'production' || process.env.VERCEL) {
+  vercelAdapter = async () => {
+    const vercel = await import('@astrojs/vercel/serverless');
+    return vercel.default();
+  };
 }
 
 export default defineConfig({
   site: "https://astro-portfolio-v3-dusky.vercel.app",
   output: outputMode,
-  adapter: vercel(),
+  adapter: vercelAdapter ? await vercelAdapter() : undefined,
   integrations: [tailwind(), mdx(), sitemap()],
   image: {
     domains: ["picsum.photos"],
@@ -57,4 +63,3 @@ export default defineConfig({
     remarkPlugins: [remarkReadingTime],
   },
 });
-
