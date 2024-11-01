@@ -1,7 +1,13 @@
 {
-    "buildCommand": "npm run build",
+    "buildCommand": "npm run vercel-build",
     "outputDirectory": "dist",
     "framework": "astro",
+    "builds": [
+      {
+        "src": "src/**/*",
+        "use": "@astrojs/vercel/serverless"
+      }
+    ],
     "routes": [
       { "handle": "filesystem" },
       { "src": "/(.*)", "dest": "/index.html" }
