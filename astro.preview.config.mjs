@@ -2,11 +2,13 @@ import { defineConfig } from "astro/config";
 import tailwind from "@astrojs/tailwind";
 import mdx from "@astrojs/mdx";
 import sitemap from "@astrojs/sitemap";
+import vercel from "@astrojs/vercel/static";
 import { remarkReadingTime } from './remark-reading-time.mjs';
 
 export default defineConfig({
   site: "https://astro-portfolio-v3-dusky.vercel.app",
-  output: "static",  // Use static output for local preview
+  output: "static",
+  adapter: vercel(),
   integrations: [tailwind(), mdx(), sitemap()],
   image: {
     domains: ["picsum.photos"],
@@ -15,3 +17,5 @@ export default defineConfig({
     remarkPlugins: [remarkReadingTime],
   },
 });
+
+
