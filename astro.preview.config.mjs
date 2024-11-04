@@ -2,13 +2,15 @@ import { defineConfig } from "astro/config";
 import tailwind from "@astrojs/tailwind";
 import mdx from "@astrojs/mdx";
 import sitemap from "@astrojs/sitemap";
-import vercel from "@astrojs/vercel/static";
+import node from '@astrojs/node';
 import { remarkReadingTime } from './remark-reading-time.mjs';
 
 export default defineConfig({
   site: "https://astro-portfolio-v3-dusky.vercel.app",
-  output: "static",
-  adapter: vercel(),
+  output: 'server',
+  adapter: node({
+    mode: "standalone"
+  }),
   integrations: [tailwind(), mdx(), sitemap()],
   image: {
     domains: ["picsum.photos"],
