@@ -14,7 +14,7 @@ if (process.env.NODE_ENV === 'production' || process.env.VERCEL) {
 // https://astro.build/config
 export default defineConfig({
   site: "https://astro-portfolio-v3-dusky.vercel.app",
-  output:  "server",
+  output:  "hybrid",
   // adapter: process.env.NODE_ENV === 'production' ? vercelAdapter() : undefined,
   adapter: vercel(),
   integrations: [tailwind(), mdx(), sitemap()],
