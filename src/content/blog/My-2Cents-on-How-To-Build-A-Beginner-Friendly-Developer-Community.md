@@ -6,7 +6,7 @@ image: {
     src: "https://media2.dev.to/dynamic/image/width=800%2Cheight=%2Cfit=scale-down%2Cgravity=auto%2Cformat=auto/https%3A%2F%2Fthepracticaldev.s3.amazonaws.com%2Fi%2Frnp8yi6kc9jsxj99yvo1.jpg",
     alt: "People organizing at a coffee shop"
 }
-publishDate: "2029-12-20 12:00 || Dec 20, 2019"
+publishDate: "2019-12-20 12:00"
 category: "How-To-Do, FreeCodeCamp, Learning, Community"
 tags: [developer, freeCodeCamp, learning, community]
 ---
