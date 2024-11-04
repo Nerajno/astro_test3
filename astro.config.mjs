@@ -8,7 +8,9 @@ import { remarkReadingTime } from './remark-reading-time.mjs';
 export default defineConfig({
   site: "https://astro-portfolio-v3-dusky.vercel.app",
   output: 'server',
-  adapter: vercel(),
+  adapter: vercel({
+    imageService: true,
+  }),
   integrations: [tailwind(), mdx(), sitemap()],
   image: {
     domains: ["picsum.photos"],
