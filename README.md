@@ -1,3 +1,6 @@
+## Current Status
+[![Netlify Status](https://api.netlify.com/api/v1/badges/e2cb8d28-2711-421d-b71d-044bbb28ddda/deploy-status)](https://app.netlify.com/sites/radiant-sprinkles-d2960e/deploys)
+
 # Astroship - Astro SAAS Starter Website Template
 
 Astroship is a free starter astro website template for saas, startups, marketing websites, landing pages & blogs. Built with Astro & TailwindCSS.
