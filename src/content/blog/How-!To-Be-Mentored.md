@@ -3,7 +3,7 @@ draft: false
 title: "How !To Be Mentored"
 snippet: "A mentorship relationship involves an experienced mentor guiding a less experienced mentee for personal and professional development. Mentees should focus on five key actions: setting clear goals, being open to learning, taking initiative, communicating effectively, and following through on advice, while mentors should provide guidance, share knowledge, and foster independence. The document concludes with information about Nerando, a full-stack software developer seeking new opportunities, who has experience in team building and various programming technologies including React, Ruby on Rails, and MERN stack."
 image: {
-    src: "https://media2.dev.to/dynamic/image/width=1000,height=420,fit=cover,gravity=auto,format=auto/https%3A%2F%2Fdev-to-uploads.s3.amazonaws.com%2Fuploads%2Farticles%2Fm6kr0dca8onz5gnyo52d.jpg",
+    src: "https://media2.dev.to/dynamic/image/width=1000,height=420,fit=cover,gravity=auto,format=auto/https://dev-to-uploads.s3.amazonaws.com%2Fuploads%2Farticles%2Fm6kr0dca8onz5gnyo52d.jpg",
     alt: "A man running a race in the early morning."
 }
 publishDate: "2023-05-17 12:00"
