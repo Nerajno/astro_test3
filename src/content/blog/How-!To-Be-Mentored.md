@@ -8,7 +8,7 @@ image: {
 }
 publishDate: "2023-05-17 12:00"
 category: "Methodologies, Practices, Learning"
-tags: [mentorship, careerdevelopment, softwareengineering, developer, frontend]
+tags: [mentorship, careerdevelopment, softwareengineering, developer]
 ---
 
 ## Intro
