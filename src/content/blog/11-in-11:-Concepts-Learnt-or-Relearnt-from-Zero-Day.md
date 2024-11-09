@@ -8,7 +8,6 @@ image: {
 }
 publishDate: "2024-09-20 12:00"
 category: "Reflections, Code"
-author: "Me"
 tags: [javascript,career, typescript,learning]
 ---
 
