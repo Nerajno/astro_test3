@@ -12,6 +12,7 @@ export async function getStaticPaths() {
 }
 
 const { event } = Astro.props;
+export const prerender = true;
 ---
 
 <Layout title={event.title}>
