@@ -6,6 +6,7 @@ import { remarkReadingTime } from './remark-reading-time.mjs';
 import netlify from "@astrojs/netlify/functions";
 
 export default defineConfig({
+  site: "https://radiant-sprinkles-d2960e.netlify.app",
   output: "server",
   adapter: netlify(),
   integrations: [tailwind(), mdx(), sitemap()],
