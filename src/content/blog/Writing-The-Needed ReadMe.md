@@ -3,7 +3,7 @@ draft: false
 title: "Writing The Needed ReadMe"
 snippet: "A README is like a welcome sign for your code project that explains what it does and how to use it. Good READMEs help other developers quickly understand your work and make your project stand out among many others. For new developers, writing clear READMEs shows professionalism and helps both employers and yourself remember how the project works."
 image: {
-    src: "/assets/blog_covers/black_woman_writing.jpg",
+    src: "https://thepracticaldev.s3.amazonaws.com/i/2iap6bvbcumg3isci8og.jpg",
     alt: "Black female developer writing."
 }
 publishDate: "2019-10-19 12:00"
@@ -14,8 +14,8 @@ tags: [flatiron, bootcamp, opensource, documentationvscreation]
 ## A Guide to the Importance of Writing Good ReadMe’s
 
 
-<!-- ![Black female developer ](https://thepracticaldev.s3.amazonaws.com/i/2iap6bvbcumg3isci8og.jpg) -->
-![Black female developer ](/src/assets/blog_covers/black_woman_writing.jpg)
+![Black female developer ](https://thepracticaldev.s3.amazonaws.com/i/2iap6bvbcumg3isci8og.jpg)
+<!-- ![Black female developer ](/src/assets/blog_covers/black_woman_writing.jpg) -->
 
 So here you are, you have good written code and uploaded it to whatever open source repository you use  Github, Gitlab, Bitbucket or even your own hosted repository. You are sure your code works, you have tested it, retested... even tested it on Becky's machine and refactored it on your machine and sure it works. So the question to the person who looks at you repo is ...... HOW THE HELL DOES IT WORK ?????
 
