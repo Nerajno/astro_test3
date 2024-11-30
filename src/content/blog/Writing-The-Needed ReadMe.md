@@ -4,7 +4,7 @@ title: "Writing The Needed ReadMe"
 snippet: "A README is like a welcome sign for your code project that explains what it does and how to use it. Good READMEs help other developers quickly understand your work and make your project stand out among many others. For new developers, writing clear READMEs shows professionalism and helps both employers and yourself remember how the project works."
 image: {
     # src: "/src/assets/blog_covers/readme_writing.jpg",
-    src: "https://images.unsplash.com/photo-1593720213428-28a5b9e94613?&fit=crop&w=430&h=240"
+    src: "https://images.unsplash.com/photo-1593720213428-28a5b9e94613?&fit=crop&w=430&h=240",
     alt: "Black female developer writing."
 }
 publishDate: "2019-10-19 12:00"
