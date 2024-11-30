@@ -1,0 +1,17 @@
+[build]
+  command = "astro build"
+  publish = "dist"
+
+[[redirects]]
+  from = "/*"
+  to = "/index.html"
+  status = 200
+
+[functions]
+  node_bundler = "esbuild"
+
+[dev]
+  framework = "#custom"
+  command = "astro dev"
+  port = 3000
+  targetPort = 3000

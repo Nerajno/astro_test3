@@ -3,12 +3,11 @@ draft: false
 title: "11 in 11: Concepts Learnt or Relearnt from Zero Day"
 snippet: "A reflection on valuable lessons learned during 11 months in a new tech role, covering everything from embracing \"comfortable discomfort\" to mastering TypeScript enums, container queries, and the importance of self-care in tech."
 image: {
-    src: "https://media2.dev.to/dynamic/image/width=800%2Cheight=%2Cfit=scale-down%2Cgravity=auto%2Cformat=auto/https%3A%2F%2Fdev-to-uploads.s3.amazonaws.com%2Fuploads%2Farticles%2Fhhcitqui0sr45io11cs9.jpg",
+    src: "https://dev-to-uploads.s3.amazonaws.com/uploads/articles/hhcitqui0sr45io11cs9.jpg",
     alt: "A day in a garden"
 }
 publishDate: "2024-09-20 12:00"
 category: "Reflections, Code"
-author: "Me"
 tags: [javascript,career, typescript,learning]
 ---
 
