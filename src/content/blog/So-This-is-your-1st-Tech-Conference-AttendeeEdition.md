@@ -11,7 +11,6 @@ category: "How-To-Do, Conference, Learning"
 tags: [productivity, conference, learning, community ]
 ---
 
-![](https://media.giphy.com/media/1iIjlrM9rXeiQ/giphy.gif)
 To continue from the [previous article](https://dev.to/nerajno/so-this-is-your-1st-tech-conference-volunteeredition-450c) in this series, we will continue by looking into what one should consider when attending a tech conference as a first-time attendee. And yes, I am doing this with consideration to [RenderAtl 2023](https://www.renderatl.com/).
 
 

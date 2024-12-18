@@ -11,9 +11,7 @@ category: "How-To-Do, FreeCodeCamp, Learning, Community"
 tags: [developer, freeCodeCamp, learning, community]
 ---
 
-![Alt Text](https://thepracticaldev.s3.amazonaws.com/i/rnp8yi6kc9jsxj99yvo1.jpg)
 ## Intro
-
    For a good majority of people, learning how to code and growing as a developer is a far fetched dream along with becoming a billionaire and owning a company. Is it impossible ? Well no, but it might be really hard and takes a lot of time and practice to get to a place where you can feel comfortable about your knowledge in code and have enough experience to understand all the why's or how's. Let's be honest, there aren't a lot of experienced developers out there that are welcoming to beginners.
 
    That's pretty reassuring but what happens when I know zero things about coding and need guidance to actually get to a place where I can help someone else. It doesn't make sense to tell me to code, give me a book and then push me into the world of tutorials, algorithms and YouTube videos. Let's be honest here, to get that the previously mentioned place is a chore. There has to be better ways to help beginners grow into seasoned developers.

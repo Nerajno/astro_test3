@@ -13,8 +13,6 @@ tags: [hackathon, blogging, flatiron, growth]
 
 ## Hackathons … A Junior Developer’s growth tool
 
-![Alt Text](https://thepracticaldev.s3.amazonaws.com/i/hujxt40apqh81vsoc7rt.jpg)
-
 “A hackathon is an event when programmers and other like minded individuals meet to do collaborative computer programming to solve a problem.” -Wikipedia. Hackathons provide a venue for self-expression and creativity through technology. Such events are carried for some short period of time like 24-48 hours. You can say that hackathon is a sort of competition where teams of developers, techie, graphic designers, digital enthusiasts, and software engineers gather to build a new product, software, and to solve the problems regarding various issues in a particular field.
 
 

@@ -11,7 +11,6 @@ category: "Blog, Flatiron, FreeCodeCamp"
 tags: [Flatiron, FreeCodeCamp, developer, blogs]
 ---
 
-![](https://thepracticaldev.s3.amazonaws.com/i/qbpchpd8rlmal7lx8a79.jpeg)
 
    Access to information has become fundamental human right and  the internet being what it is, has become a bastion of information.  The creation off of web pages and web apps has been the creative domain of programmers and software engineers of which 1.7% are blind ([StackOverFlow Survey 2018](https://insights.stackoverflow.com/survey/2018#demographics)). This blog aims to look into that part of the developer community.
 
