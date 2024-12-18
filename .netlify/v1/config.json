@@ -1,1 +1,1 @@
-{"images":{"remote_images":["https?://picsum\\.photos/.*"]},"headers":[{"for":"/_astro/*","values":{"Cache-Control":"public, max-age=31536000, immutable"}}]}
+{"images":{"remote_images":["https?://picsum\\.photos/.*","https://([a-z0-9-]+\\.)*amazonaws\\.com(:[0-9]+)?(\\/[^?#]*)?([?][^#]*)?","https://([a-z0-9-]+\\.)*giphy\\.com(:[0-9]+)?(\\/[^?#]*)?([?][^#]*)?","https://([a-z0-9-]+\\.)*unsplash\\.com(:[0-9]+)?(\\/[^?#]*)?([?][^#]*)?"]},"headers":[{"for":"/_astro/*","values":{"Cache-Control":"public, max-age=31536000, immutable"}}]}

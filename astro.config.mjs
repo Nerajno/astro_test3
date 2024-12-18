@@ -16,7 +16,16 @@ export default defineConfig({
     remotePatterns: [{
       protocol: 'https',
       hostname: '**.amazonaws.com',
-    }],
+    },
+    {
+      protocol: 'https',
+      hostname: '**.giphy.com',
+    },
+    {
+      protocol: 'https',
+      hostname: '**.unsplash.com',
+    }
+  ],
   },
   markdown: {
     remarkPlugins: [remarkReadingTime],

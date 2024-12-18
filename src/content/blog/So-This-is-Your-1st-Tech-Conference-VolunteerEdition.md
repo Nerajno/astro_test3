@@ -9,7 +9,19 @@ image: {
 publishDate: "2023-05-03 12:00"
 category: "How-To-Do, Conference, Learning"
 tags: [beginners, career, learning, community]
+
+# Add this to the frontmatter
+imageImport: |
+    import { Image } from 'astro:assets';
 ---
+
+{frontmatter.imageImport && <Image
+  src="https://media.giphy.com/media/27ui0ttUYgtZ29byfY/giphy.gif"
+  alt="Giphy GIF"
+  width={480}
+  height={270}
+/>}
+
 
 With one of my current favorite tech conferences coming up, [RenderATL 2023)](https://www.renderatl.com/), and having a couple conversations and queries from members of the freeCodecamp Atl community.  I have decided to write a series on how to get the most out of being a part of a tech conference as a first timer in several capacities. We are gonna look into being a first-time volunteer.
 
