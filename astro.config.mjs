@@ -13,6 +13,19 @@ export default defineConfig({
   image: {
     domains: ["picsum.photos"],
     service: { entrypoint: "astro/assets/services/sharp" },
+    remotePatterns: [{
+      protocol: 'https',
+      hostname: '**.amazonaws.com',
+    },
+    {
+      protocol: 'https',
+      hostname: '**.giphy.com',
+    },
+    {
+      protocol: 'https',
+      hostname: '**.unsplash.com',
+    }
+  ],
   },
   markdown: {
     remarkPlugins: [remarkReadingTime],
