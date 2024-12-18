@@ -11,8 +11,6 @@ category: "Reflections, Code"
 tags: [javascript,career, typescript,learning]
 ---
 
-![Cover Image of a garden](https://dev-to-uploads.s3.amazonaws.com/uploads/articles/hhcitqui0sr45io11cs9.jpg)
-
 As of the first of this month, it's been 11 months since I have been in my current position. It took exactly 1 year between "We are sorry " and "Welcome to the team". Eventually, someone will speak to the emotional toll of the job hunt in this current market but not me. This job hunt consisted of upskilling, networking, re-learning and unlearning stuff. Overall, I tracked somewhere in the neighbourhood of 700-ish applications, what I will say is that job-hunt 2023 was different from all the previous timelines. A new career opportunity, as always, brings a new set of challenges but also provides a lot of insights, here are 11 insights learnt thus far :
 
 ## 1: Comfortable Discomfort

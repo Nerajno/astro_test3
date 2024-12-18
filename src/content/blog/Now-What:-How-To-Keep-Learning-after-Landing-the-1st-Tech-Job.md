@@ -11,8 +11,6 @@ category: "Practices, Learning, Methodologies"
 tags: [ softwareengineering, developer]
 ---
 
-![nope giphy](https://media.giphy.com/media/giiDKwHWxF2wmR21sr/giphy.gif)
-
 If you are not like me or a couple of people I know, you have managed to keep create a good strategy that maintains healthy learning habits. In a sentence, I screwed up on this career development aspect after my first job. I made the mistake of getting the job and not understanding that this was also my career *(MISTAKES WERE MADE 🥹)*, I had a limited long-term outlook,
 *(again, mistakes were made *. Upon some reflection and good discussions, here are some gained takeaways on how to continue learning after getting the job.
 

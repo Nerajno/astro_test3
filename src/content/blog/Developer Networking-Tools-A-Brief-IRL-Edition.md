@@ -13,7 +13,6 @@ tags: [developer, beginners, javascript, networking]
 
 ## So Why Do I Need To Do This?
 
-![](https://media.giphy.com/media/KX5nwoDX97AtPvKBF6/giphy.gif)
 
 Your net worth depends on your network and as we slowly get back to in-person conferences, I present my take on alternative networking tools. Like all facets of life, you need the right tools to do the work. Weirdly, however, is the fact that unconventional tools sometimes have a better effect than the designed tool for that specific task, think **[silly putty] (https://www.todayifoundout.com/index.php/2011/11/silly-putty-was-invented-by-accident/)** and **[crazy glue] (https://urbansurvivalsite.com/surprising-uses-super-glue/)**. We can copy this same analogy to the field of software engineering as who you know and who knows you are the avenue to your current or next job. So below are some unconventional tools that I have used to help to build my network over the last 2+ years of my professional career.
 

@@ -11,8 +11,6 @@ category: "Careergrowth, Mentership, Practices, Specialization"
 tags: [mentors, developers, practice, react]
 ---
 
-![Alt Text](https://images.pexels.com/photos/2377182/pexels-photo-2377182.jpeg)
-
 ## The Ideation
 As I grew older(shut up and stop snickering), I recognized the importance of using the experience of those who have gone down the road before you or have done something similar to you are doing. Based on conversations, tweets, podcasts and  articles, I decided to reach out to some senior developers I know and pick their brains : asking questions pertaining to how they got to where they are now and what best practices I could do to achieve my goal of being a software engineer and a part time instructor.
 

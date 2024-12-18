@@ -11,8 +11,6 @@ category: "Reflections, Process"
 tags: [onboarding, tooling, softskills]
 ---
 
-![](https://media.giphy.com/media/27ui0ttUYgtZ29byfY/giphy.gif)
-
 So the offer letter has been signed and the job search is finally over (mine took 365 days ~ update coming). So the question to be answered is what or what does one do next? The answer ... a lot of unlearning and re-learning. So let's cover a few tips that were instrumental in helping me to become the best version of myself for this new chapter of my tech career. To make it easier, we will break these tips down into the following: onboarding (people and tech), resting( its importance), relearning how to work and deliberate learning.
 
 ## Onboarding ~ People and Procedures

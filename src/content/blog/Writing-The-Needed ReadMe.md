@@ -16,7 +16,6 @@ imageImport: |
 
 ## A Guide to the Importance of Writing Good ReadMe's
 
-
 So here you are, you have good written code and uploaded it to whatever open source repository you use  Github, Gitlab, Bitbucket or even your own hosted repository. You are sure your code works, you have tested it, retested... even tested it on Becky's machine and refactored it on your machine and sure it works. So the question to the person who looks at you repo is ...... HOW THE HELL DOES IT WORK ?????
 
 ![](https://thepracticaldev.s3.amazonaws.com/i/awzimx9okklsklgt2ert.jpg)
