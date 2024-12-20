@@ -24,6 +24,10 @@ export default defineConfig({
     {
       protocol: 'https',
       hostname: '**.unsplash.com',
+    },
+    {
+      protocol: 'https',
+      hostname: '**.dev.to',
     }
   ],
   },
