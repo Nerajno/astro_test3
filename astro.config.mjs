@@ -28,6 +28,10 @@ export default defineConfig({
     {
       protocol: 'https',
       hostname: '**.dev.to',
+    },
+    {
+      protocol: 'https',
+      hostname: '**.pexels.com',
     }
   ],
   },
