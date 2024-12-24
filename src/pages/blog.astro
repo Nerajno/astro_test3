@@ -14,6 +14,9 @@ const publishedBlogEntries = await getCollection("blog", ({ data }) => {
 publishedBlogEntries.sort(function (a, b) {
   return b.data.publishDate.valueOf() - a.data.publishDate.valueOf();
 });
+
+// Extract unique tags from all blog entries
+const allTags = [...new Set(publishedBlogEntries.flatMap(entry => entry.data.tags || []))];
 ---
 
 <Layout title="Blog">
@@ -22,6 +25,15 @@ publishedBlogEntries.sort(function (a, b) {
       <Fragment slot="title">My Blog</Fragment>
       <Fragment slot="desc">
         I am working on getting better as a developer and a learner.
+      </Fragment>
+      <Fragment slot="tags">
+        <a href="/blog" class="text-blue-400 uppercase tracking-wider text-sm font-medium">All</a>
+        {allTags.map(tag => (
+          <a href={`/blog/tag/${tag}`}
+            class="text-blue-400 tracking-wider text-sm font-medium text-transform: capitalize;">
+            {tag}
+          </a>
+        ))}
       </Fragment>
     </Sectionhead>
     <main class="mt-16">
