@@ -1,4 +1,4 @@
-import { conferenceLogo } from '../assets/images/conferences';
+
 
 interface SpeakingEvent {
   id: string;

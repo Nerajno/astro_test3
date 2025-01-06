@@ -1,6 +1,6 @@
+// components/EventList.astro
 ---
-import EventCard from './eventcard.astro';
-
+import { FormData } from '../utils/dates.ts';
 interface Event {
   id: string;
   title: string;
@@ -29,17 +29,90 @@ interface Props {
 }
 
 const { events } = Astro.props;
-const upcomingEvents = events.filter(event => event.status === 'upcoming');
-const pastEvents = events.filter(event => event.status === 'past');
+
+const upcomingEvents = events
+  .filter(event => event.status === 'upcoming')
+  .sort((a, b) => new Date(a.date).getTime() - new Date(b.date).getTime());
+
+const pastEvents = events
+  .filter(event => event.status === 'past')
+  .sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime());
+
+const getLocationString = (location: Event['location']) => {
+  const parts = [
+    location.venue,
+    location.city,
+    location.state,
+    location.country !== 'USA' ? location.country : null
+  ].filter(Boolean);
+
+  return parts.join(', ');
+};
+
+const getEventTypeIcon = (type: Event['type']) => {
+  switch (type) {
+    case 'conference':
+      return '🎤';
+    case 'workshop':
+      return '💻';
+    case 'meetup':
+      return '👥';
+    case 'webinar':
+      return '🎥';
+    default:
+      return '📅';
+  }
+};
 ---
 
-<div class="space-y-12">
+<div class="space-y-16">
   {upcomingEvents.length > 0 && (
     <section>
-      <h2 class="text-3xl font-bold mb-6 text-gray-900">Upcoming Events</h2>
-      <div class="space-y-6">
+      <h2 class="text-3xl font-bold mb-8 text-gray-900">Upcoming Events</h2>
+      <div class="space-y-8">
         {upcomingEvents.map(event => (
-          <EventCard {...event} />
+          <div key={event.id} class="bg-white rounded-lg shadow-sm border border-gray-200 p-6 hover:shadow-md transition-shadow">
+            <div class="flex items-start justify-between gap-4">
+              <div class="flex-1">
+                <div class="flex items-center gap-2">
+                  <span class="text-xl" aria-hidden="true">{getEventTypeIcon(event.type)}</span>
+                  <span class="px-2 py-1 text-sm rounded-full bg-blue-100 text-blue-800">
+                    {event.type}
+                  </span>
+                  {event.tags?.map(tag => (
+                    <span class="px-2 py-1 text-sm rounded-full bg-gray-100 text-gray-700">
+                      {tag}
+                    </span>
+                  ))}
+                </div>
+
+                <h3 class="text-xl font-semibold mt-2 text-gray-900">{event.title}</h3>
+
+                <div class="mt-2 text-gray-600">
+                  <time datetime={event.date}>{formatDate(event.date)}</time>
+                  <span class="mx-2">•</span>
+                  <span>{getLocationString(event.location)}</span>
+                </div>
+
+                <p class="mt-3 text-gray-700">{event.description}</p>
+              </div>
+            </div>
+
+            {Object.entries(event.links).length > 0 && (
+              <div class="mt-4 flex flex-wrap gap-3">
+                {event.links.conferenceWebsite && (
+                  <a
+                    href={event.links.conferenceWebsite}
+                    class="inline-flex items-center text-blue-600 hover:text-blue-800"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    Event Details →
+                  </a>
+                )}
+              </div>
+            )}
+          </div>
         ))}
       </div>
     </section>
@@ -47,10 +120,81 @@ const pastEvents = events.filter(event => event.status === 'past');
 
   {pastEvents.length > 0 && (
     <section>
-      <h2 class="text-3xl font-bold mb-6 text-gray-900">Past Events</h2>
-      <div class="space-y-6">
+      <h2 class="text-3xl font-bold mb-8 text-gray-900">Past Events</h2>
+      <div class="space-y-8">
         {pastEvents.map(event => (
-          <EventCard {...event} />
+          <div key={event.id} class="bg-white rounded-lg shadow-sm border border-gray-200 p-6 hover:shadow-md transition-shadow">
+            <div class="flex items-start justify-between gap-4">
+              <div class="flex-1">
+                <div class="flex items-center gap-2">
+                  <span class="text-xl" aria-hidden="true">{getEventTypeIcon(event.type)}</span>
+                  <span class="px-2 py-1 text-sm rounded-full bg-gray-100 text-gray-700">
+                    {event.type}
+                  </span>
+                  {event.tags?.map(tag => (
+                    <span class="px-2 py-1 text-sm rounded-full bg-gray-100 text-gray-700">
+                      {tag}
+                    </span>
+                  ))}
+                </div>
+
+                <h3 class="text-xl font-semibold mt-2 text-gray-900">{event.title}</h3>
+
+                <div class="mt-2 text-gray-600">
+                  <time datetime={event.date}>{formatDate(event.date)}</time>
+                  <span class="mx-2">•</span>
+                  <span>{getLocationString(event.location)}</span>
+                </div>
+
+                <p class="mt-3 text-gray-700">{event.description}</p>
+              </div>
+            </div>
+
+            {Object.entries(event.links).length > 0 && (
+              <div class="mt-4 flex flex-wrap gap-3">
+                {event.links.video && (
+                  <a
+                    href={event.links.video}
+                    class="inline-flex items-center text-blue-600 hover:text-blue-800"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    Watch Recording →
+                  </a>
+                )}
+                {event.links.slides && (
+                  <a
+                    href={event.links.slides}
+                    class="inline-flex items-center text-blue-600 hover:text-blue-800"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    View Slides →
+                  </a>
+                )}
+                {event.links.article && (
+                  <a
+                    href={event.links.article}
+                    class="inline-flex items-center text-blue-600 hover:text-blue-800"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    Read Article →
+                  </a>
+                )}
+                {event.links.github && (
+                  <a
+                    href={event.links.github}
+                    class="inline-flex items-center text-blue-600 hover:text-blue-800"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    View Code →
+                  </a>
+                )}
+              </div>
+            )}
+          </div>
         ))}
       </div>
     </section>
@@ -60,47 +204,3 @@ const pastEvents = events.filter(event => event.status === 'past');
     <p class="text-center text-gray-500 py-12">No events found.</p>
   )}
 </div>
-
-// src/pages/speaking.astro
----
-import { speakingData } from '../data/speakingData';
-import Layout from '../layouts/Layout.astro';
-import Container from '../components/Container.astro';
-import Sectionhead from '../components/Sectionhead.astro';
-import EventList from '../components/eventList.astro';
-
-// Process and sort events
-const processedEvents = speakingData.map(event => ({
-  ...event,
-  status: new Date(event.date) > new Date() ? 'upcoming' : 'past'
-}));
-
-const sortedEvents = [...processedEvents].sort((a, b) => {
-  if (a.status === 'upcoming' && b.status !== 'upcoming') return -1;
-  if (a.status !== 'upcoming' && b.status === 'upcoming') return 1;
-  return new Date(b.date).getTime() - new Date(a.date).getTime();
-});
----
-
-<Layout title="Speaking Engagements">
-  <Container>
-    <Sectionhead>
-      <Fragment slot="title">Speaking Engagements</Fragment>
-      <Fragment slot="desc">
-        Join me at upcoming events or explore past presentations
-      </Fragment>
-    </Sectionhead>
-
-    <div class="flex flex-col gap-3 mx-auto max-w-4xl mt-16">
-      <p class="text-lg leading-relaxed text-gray-600">
-        I regularly speak at conferences, workshops, and meetups about web development,
-        developer experience, and building inclusive tech communities. Here you'll find
-        my upcoming speaking engagements and recordings of past events.
-      </p>
-    </div>
-
-    <div class="mx-auto max-w-4xl mt-12">
-      <EventList events={sortedEvents} />
-    </div>
-  </Container>
-</Layout>
