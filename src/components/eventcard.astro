@@ -1,29 +1,8 @@
 ---
-import { Image } from 'astro:assets';
 import { formatDate } from '../utils/dates';
+import type { ProcessedEvent } from '../types';
 
-interface Props {
-  id: string;
-  title: string;
-  description: string;
-  date: string;
-  location: {
-    city: string;
-    state: string;
-    country: string;
-    venue?: string;
-  };
-  links: {
-    video?: string;
-    article?: string;
-    conferenceWebsite?: string;
-    slides?: string;
-    github?: string;
-  };
-  status: 'upcoming' | 'past';
-  type: 'conference' | 'workshop' | 'meetup' | 'webinar';
-  tags?: string[];
-}
+type Props = ProcessedEvent;
 
 const { id, title, description, date, location, links, status, type, tags } = Astro.props;
 
@@ -59,7 +38,6 @@ function getEventTypeIcon(type: Props['type']) {
 const statusColor = getStatusColor(status);
 const typeColor = getTypeColor(type);
 const formattedDate = formatDate(date);
-
 const locationString = [
   location.venue,
   location.city,
@@ -71,7 +49,7 @@ const locationString = [
 <div class="bg-white rounded-lg shadow-sm border border-gray-200 p-6 hover:shadow-md transition-shadow">
   <div class="flex items-start justify-between gap-4">
     <div class="flex-1">
-      <div class="flex items-center gap-2">
+      <div class="flex items-center gap-2 flex-wrap">
         <span class="text-xl" aria-hidden="true">{getEventTypeIcon(type)}</span>
         <span class={`px-2 py-1 text-sm rounded-full ${typeColor}`}>
           {type}

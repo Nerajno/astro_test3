@@ -1,42 +1,46 @@
 ---
-import { speakingData } from '../data/speakingData.js';
-import Layout from '@layouts/Layout.astro';
-import Container from '@components/container.astro';
-import Sectionhead from '@components/sectionhead.astro';
-import Event from '@components/events.astro';
+import Layout from '../layouts/Layout.astro';
+import Container from '../components/container.astro';
+import Sectionhead from '../components/sectionhead.astro';
+import EventList from '../components/eventlist.astro';
+import { speakingData } from '../data/speakingData';
+import type { ProcessedEvent } from '../types';
 
-// Sort the speaking data by date (most recent first)
-const sortedSpeakingData = speakingData.sort((a, b) => new Date(b.date) - new Date(a.date));
+// Process and sort events
+const now = new Date();
+
+const processedEvents: ProcessedEvent[] = speakingData.map(event => {
+  const eventDate = new Date(event.date);
+  if (isNaN(eventDate.getTime())) {
+    throw new Error(`Invalid date for event: ${event.title}`);
+  }
+
+  return {
+    ...event,
+    status: eventDate > now ? 'upcoming' : 'past'
+  };
+});
 ---
 
-<Layout title='Speaking'>
+<Layout title="Speaking Engagements">
   <Container>
     <Sectionhead>
-      <Fragment slot='title'>Speaking Engagements</Fragment>
-      <Fragment slot='desc'>
-        I have had the pleasure of speaking at the following events.
+      <Fragment slot="title">Speaking Engagements</Fragment>
+      <Fragment slot="desc">
+        Join me at upcoming events or explore past presentations
       </Fragment>
     </Sectionhead>
-    <div class='flex flex-col gap-3 mx-auto max-w-4xl mt-16'>
-      <p class='text-lg leading-relaxed text-slate-500'>
-        ipsum Lorem ipsum dolor sit amet consectetur adipisicing elit.
-        Laboriosam dolorum nulla cumque odio rem aut, impedit commodi illo,
-        dignissimos iste laborum quibusdam maiores facilis voluptatem. Minus
-        facilis magni totam ea!
+
+    <div class="flex flex-col gap-3 mx-auto max-w-4xl mt-16">
+      <p class="text-lg leading-relaxed text-gray-600">
+        I regularly speak at conferences, workshops, and meetups about web development,
+        developer experience, and building inclusive tech communities. Here you'll find
+        my upcoming speaking engagements and recordings of past events.
       </p>
     </div>
-    <div class='grid md:grid-cols-1 gap-10 mx-auto max-w-4xl mt-12'>
-      {sortedSpeakingData.map((event) => (
-        <Event
-          id={event.id}
-          title={event.title}
-          description={event.description}
-          image={event.image}
-          date={event.date}
-          location={event.location}
-          links={event.links}
-        />
-      ))}
+
+    <div class="mx-auto max-w-4xl mt-12">
+      <EventList events={processedEvents} />
     </div>
   </Container>
 </Layout>

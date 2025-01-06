@@ -1,31 +1,9 @@
-// components/EventList.astro
 ---
-import { FormData } from '../utils/dates.ts';
-interface Event {
-  id: string;
-  title: string;
-  description: string;
-  date: string;
-  location: {
-    city: string;
-    state: string;
-    country: string;
-    venue?: string;
-  };
-  links: {
-    video?: string;
-    article?: string;
-    conferenceWebsite?: string;
-    slides?: string;
-    github?: string;
-  };
-  status: 'upcoming' | 'past';
-  type: 'conference' | 'workshop' | 'meetup' | 'webinar';
-  tags?: string[];
-}
+import type { ProcessedEvent } from '../types';
+import EventCard from './EventCard.astro';
 
 interface Props {
-  events: Event[];
+  events: ProcessedEvent[];
 }
 
 const { events } = Astro.props;
@@ -37,32 +15,6 @@ const upcomingEvents = events
 const pastEvents = events
   .filter(event => event.status === 'past')
   .sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime());
-
-const getLocationString = (location: Event['location']) => {
-  const parts = [
-    location.venue,
-    location.city,
-    location.state,
-    location.country !== 'USA' ? location.country : null
-  ].filter(Boolean);
-
-  return parts.join(', ');
-};
-
-const getEventTypeIcon = (type: Event['type']) => {
-  switch (type) {
-    case 'conference':
-      return '🎤';
-    case 'workshop':
-      return '💻';
-    case 'meetup':
-      return '👥';
-    case 'webinar':
-      return '🎥';
-    default:
-      return '📅';
-  }
-};
 ---
 
 <div class="space-y-16">
@@ -71,48 +23,7 @@ const getEventTypeIcon = (type: Event['type']) => {
       <h2 class="text-3xl font-bold mb-8 text-gray-900">Upcoming Events</h2>
       <div class="space-y-8">
         {upcomingEvents.map(event => (
-          <div key={event.id} class="bg-white rounded-lg shadow-sm border border-gray-200 p-6 hover:shadow-md transition-shadow">
-            <div class="flex items-start justify-between gap-4">
-              <div class="flex-1">
-                <div class="flex items-center gap-2">
-                  <span class="text-xl" aria-hidden="true">{getEventTypeIcon(event.type)}</span>
-                  <span class="px-2 py-1 text-sm rounded-full bg-blue-100 text-blue-800">
-                    {event.type}
-                  </span>
-                  {event.tags?.map(tag => (
-                    <span class="px-2 py-1 text-sm rounded-full bg-gray-100 text-gray-700">
-                      {tag}
-                    </span>
-                  ))}
-                </div>
-
-                <h3 class="text-xl font-semibold mt-2 text-gray-900">{event.title}</h3>
-
-                <div class="mt-2 text-gray-600">
-                  <time datetime={event.date}>{formatDate(event.date)}</time>
-                  <span class="mx-2">•</span>
-                  <span>{getLocationString(event.location)}</span>
-                </div>
-
-                <p class="mt-3 text-gray-700">{event.description}</p>
-              </div>
-            </div>
-
-            {Object.entries(event.links).length > 0 && (
-              <div class="mt-4 flex flex-wrap gap-3">
-                {event.links.conferenceWebsite && (
-                  <a
-                    href={event.links.conferenceWebsite}
-                    class="inline-flex items-center text-blue-600 hover:text-blue-800"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                  >
-                    Event Details →
-                  </a>
-                )}
-              </div>
-            )}
-          </div>
+          <EventCard {...event} />
         ))}
       </div>
     </section>
@@ -123,78 +34,7 @@ const getEventTypeIcon = (type: Event['type']) => {
       <h2 class="text-3xl font-bold mb-8 text-gray-900">Past Events</h2>
       <div class="space-y-8">
         {pastEvents.map(event => (
-          <div key={event.id} class="bg-white rounded-lg shadow-sm border border-gray-200 p-6 hover:shadow-md transition-shadow">
-            <div class="flex items-start justify-between gap-4">
-              <div class="flex-1">
-                <div class="flex items-center gap-2">
-                  <span class="text-xl" aria-hidden="true">{getEventTypeIcon(event.type)}</span>
-                  <span class="px-2 py-1 text-sm rounded-full bg-gray-100 text-gray-700">
-                    {event.type}
-                  </span>
-                  {event.tags?.map(tag => (
-                    <span class="px-2 py-1 text-sm rounded-full bg-gray-100 text-gray-700">
-                      {tag}
-                    </span>
-                  ))}
-                </div>
-
-                <h3 class="text-xl font-semibold mt-2 text-gray-900">{event.title}</h3>
-
-                <div class="mt-2 text-gray-600">
-                  <time datetime={event.date}>{formatDate(event.date)}</time>
-                  <span class="mx-2">•</span>
-                  <span>{getLocationString(event.location)}</span>
-                </div>
-
-                <p class="mt-3 text-gray-700">{event.description}</p>
-              </div>
-            </div>
-
-            {Object.entries(event.links).length > 0 && (
-              <div class="mt-4 flex flex-wrap gap-3">
-                {event.links.video && (
-                  <a
-                    href={event.links.video}
-                    class="inline-flex items-center text-blue-600 hover:text-blue-800"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                  >
-                    Watch Recording →
-                  </a>
-                )}
-                {event.links.slides && (
-                  <a
-                    href={event.links.slides}
-                    class="inline-flex items-center text-blue-600 hover:text-blue-800"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                  >
-                    View Slides →
-                  </a>
-                )}
-                {event.links.article && (
-                  <a
-                    href={event.links.article}
-                    class="inline-flex items-center text-blue-600 hover:text-blue-800"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                  >
-                    Read Article →
-                  </a>
-                )}
-                {event.links.github && (
-                  <a
-                    href={event.links.github}
-                    class="inline-flex items-center text-blue-600 hover:text-blue-800"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                  >
-                    View Code →
-                  </a>
-                )}
-              </div>
-            )}
-          </div>
+          <EventCard {...event} />
         ))}
       </div>
     </section>
