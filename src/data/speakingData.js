@@ -1,15 +1,30 @@
 export const speakingData = [
     {
-      id: "past-conference-2022",
-      title: "Past Conference 2022",
+      id: "past-conference-2024",
+      title: "ConnectTech 2024 - How to Conference : A User Guide",
       description:
-        "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla vitae semper nisl, id lacinia nunc.",
+        "Tech conferences can feel overwhelming for introverts, but they're essential for career growth and skill development. Our guide shows you how to navigate these events effectively, from packing strategies to finding quiet spaces for recharging.",
       image: "https://picsum.photos/seed/picsum/200/300",
-      date: "2022-10-10",
-      location: "Los Angeles, CA",
+      date: "2024-10-10",
+      location: "Atlanta, GA",
       links: {
         video: "https://example.com/conference2022/video",
         article: "https://example.com/conference2022/article",
+        conferenceWebsite: "https://2024.connect.tech/session/699563"
+      },
+    },
+    {
+      id: "past-conference-2023",
+      title: "ConnectTech 2023 - This is Technical Talk - Essential People Skills for Developers",
+      description:
+        "Essential interpersonal skills are just as crucial as technical expertise in software development. This guide explores seven fundamental areas including communication, teamwork, and leadership, providing practical strategies to enhance each skill. Learn how to boost your effectiveness as a developer through actionable tips for better problem-solving, time management, and innovation.",
+      image: "https://picsum.photos/seed/picsum/200/300",
+      date: "2024-10-10",
+      location: "Atlanta, GA",
+      links: {
+        video: "https://example.com/conference2022/video",
+        article: "https://example.com/conference2022/article",
+        conferenceWebsite: "https://2024.connect.tech/session/699563"
       },
     },
     {
