@@ -1,28 +1,8 @@
 ---
-import { Image } from 'astro:assets';
+import { formatDate } from '../utils/dates';
+import type { ProcessedEvent } from '../types';
 
-interface Props {
-  id: string;
-  title: string;
-  description: string;
-  date: string;
-  location: {
-    city: string;
-    state: string;
-    country: string;
-    venue?: string;
-  };
-  links: {
-    video?: string;
-    article?: string;
-    conferenceWebsite?: string;
-    slides?: string;
-    github?: string;
-  };
-  status: 'upcoming' | 'past';
-  type: 'conference' | 'workshop' | 'meetup' | 'webinar';
-  tags?: string[];
-}
+type Props = ProcessedEvent;
 
 const { id, title, description, date, location, links, status, type, tags } = Astro.props;
 
@@ -40,81 +20,81 @@ function getTypeColor(type: 'conference' | 'workshop' | 'meetup' | 'webinar') {
   return colors[type];
 }
 
+function getEventTypeIcon(type: Props['type']) {
+  switch (type) {
+    case 'conference':
+      return '🎤';
+    case 'workshop':
+      return '💻';
+    case 'meetup':
+      return '👥';
+    case 'webinar':
+      return '🎥';
+    default:
+      return '📅';
+  }
+}
+
 const statusColor = getStatusColor(status);
 const typeColor = getTypeColor(type);
-const formattedDate = new Date(date).toLocaleDateString('en-US', {
-  year: 'numeric',
-  month: 'long',
-  day: 'numeric'
-});
+const formattedDate = formatDate(date);
+const locationString = [
+  location.venue,
+  location.city,
+  location.state,
+  location.country !== 'USA' ? location.country : null
+].filter(Boolean).join(', ');
 ---
 
-<div class="card bg-white shadow-md rounded-lg overflow-hidden hover:shadow-lg transition-shadow duration-300">
-  <div class="flex flex-col sm:flex-row">
-    <div class="w-full sm:w-48 flex-shrink-0">
-      <Image
-        src={""}
-        alt={title}
-        width={192}
-        height={192}
-        class="object-cover w-full h-48 sm:h-full"
-      />
-    </div>
-    <div class="p-6 flex-grow">
-      <div class="flex flex-wrap items-center gap-2 mb-3">
-        <h3 class="text-xl font-bold text-gray-900">{title}</h3>
-        <span class={`px-2 py-1 rounded-full text-xs font-semibold ${statusColor}`}>
-          {status === 'upcoming' ? 'Upcoming' : 'Past'}
-        </span>
-        <span class={`px-2 py-1 rounded-full text-xs font-semibold ${typeColor}`}>
+<div class="bg-white rounded-lg shadow-sm border border-gray-200 p-6 hover:shadow-md transition-shadow">
+  <div class="flex items-start justify-between gap-4">
+    <div class="flex-1">
+      <div class="flex items-center gap-2 flex-wrap">
+        <span class="text-xl" aria-hidden="true">{getEventTypeIcon(type)}</span>
+        <span class={`px-2 py-1 text-sm rounded-full ${typeColor}`}>
           {type}
         </span>
-      </div>
-
-      <p class="text-gray-600 mb-4 line-clamp-3">{description}</p>
-
-      <div class="space-y-2 text-gray-600">
-        <p class="flex items-center">
-          <span class="inline-block w-20 font-medium">Date:</span>
-          {formattedDate}
-        </p>
-        <p class="flex items-center">
-          <span class="inline-block w-20 font-medium">Location:</span>
-          {location.city}, {location.state}, {location.country}
-        </p>
-        {location.venue && (
-          <p class="flex items-center">
-            <span class="inline-block w-20 font-medium">Venue:</span>
-            {location.venue}
-          </p>
-        )}
-      </div>
-
-      {tags && tags.length > 0 && (
-        <div class="flex flex-wrap gap-1.5 mt-4">
-          {tags.map(tag => (
-            <span class="px-2 py-1 bg-gray-100 text-gray-600 text-xs rounded-full">
-              {tag}
-            </span>
-          ))}
-        </div>
-      )}
-
-      <div class="flex flex-wrap gap-2 mt-4">
-        {Object.entries(links).map(([key, value]) => (
-          value && (
-            <a
-              href={value}
-              target="_blank"
-              rel="noopener noreferrer"
-              class="inline-flex items-center px-3 py-1.5 text-sm font-medium rounded-md
-                    bg-gray-100 text-gray-700 hover:bg-gray-200 transition-colors duration-200"
-            >
-              {key.charAt(0).toUpperCase() + key.slice(1)}
-            </a>
-          )
+        <span class={`px-2 py-1 text-sm rounded-full ${statusColor}`}>
+          {status === 'upcoming' ? 'Upcoming' : 'Past'}
+        </span>
+        {tags?.map(tag => (
+          <span class="px-2 py-1 text-sm rounded-full bg-gray-100 text-gray-700">
+            {tag}
+          </span>
         ))}
       </div>
+
+      <h3 class="text-xl font-semibold mt-2 text-gray-900">{title}</h3>
+
+      <div class="mt-2 text-gray-600">
+        <time datetime={date}>{formattedDate}</time>
+        <span class="mx-2">•</span>
+        <span>{locationString}</span>
+      </div>
+
+      <p class="mt-3 text-gray-700">{description}</p>
     </div>
   </div>
+
+  {Object.entries(links).length > 0 && (
+    <div class="mt-4 flex flex-wrap gap-3">
+      {Object.entries(links).map(([key, url]) =>
+        url && (
+          <a
+            href={url}
+            class="inline-flex items-center text-blue-600 hover:text-blue-800"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            {key === 'conferenceWebsite' ? 'Event Details' :
+             key === 'video' ? 'Watch Recording' :
+             key === 'slides' ? 'View Slides' :
+             key === 'article' ? 'Read Article' :
+             key === 'github' ? 'View Code' :
+             key.charAt(0).toUpperCase() + key.slice(1)} →
+          </a>
+        )
+      )}
+    </div>
+  )}
 </div>
