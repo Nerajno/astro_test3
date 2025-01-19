@@ -1,46 +1,59 @@
 ---
 export const prerender = false;
 
-import Contactform from "@components/contactform.astro";
-import Container from "@components/container.astro";
-import Sectionhead from "@components/sectionhead.astro";
-import Layout from "@layouts/Layout.astro";
-import { Icon } from "astro-icon";
+import Contactform from '@components/contactform.astro';
+import Container from '@components/container.astro';
+import Sectionhead from '@components/sectionhead.astro';
+import Layout from '@layouts/Layout.astro';
+import { Icon } from 'astro-icon/components';
 ---
 
-<Layout title="Contact">
+<Layout title='Contact'>
   <Container>
     <Sectionhead>
-      <Fragment slot="title">Contact</Fragment>
-      <Fragment slot="desc">Drop me a message, I may be able to help.</Fragment>
+      <Fragment slot='title'>Contact</Fragment>
+      <Fragment slot='desc'>Drop me a message, I may be able to help.</Fragment>
     </Sectionhead>
 
-    <div class="grid md:grid-cols-2 gap-10 mx-auto max-w-4xl mt-16">
+    <div class='grid md:grid-cols-2 gap-10 mx-auto max-w-4xl mt-16'>
       <div>
-        <h2 class="font-medium text-2xl text-gray-800">Contact Nerando</h2>
-        <p class="text-lg leading-relaxed text-slate-500 mt-3">
-          Have something to say, got a question or just want to say hi? (You know what to do 😅).
+        <h2 class='font-medium text-2xl text-gray-800'>Contact Nerando</h2>
+        <p class='text-lg leading-relaxed text-slate-500 mt-3'>
+          Have something to say, got a question or just want to say hi? (You
+          know what to do 😅).
           <br />
           The socials work too.
         </p>
-        <div class="mt-5">
-          <ul class="flex space-x-4">
+        <div class='mt-5'>
+          <ul class='flex space-x-4'>
             <li>
-              <a href="https://www.linkedin.com/in/nerando-johnson/" target="_blank" rel="noopener noreferrer" class="text-gray-600 hover:text-gray-900">
-                <Icon class="w-6 h-6" name="mdi:linkedin" />
-                <span class="sr-only">LinkedIn</span>
+              <a
+                href='https://www.linkedin.com/in/nerando-johnson/'
+                target='_blank'
+                rel='noopener noreferrer'
+                class='text-gray-600 hover:text-gray-900'>
+                <Icon class='w-6 h-6' name='mdi:linkedin' />
+                <span class='sr-only'>LinkedIn</span>
               </a>
             </li>
             <li>
-              <a href="https://calendly.com/nerandojohnsontech/consults" target="_blank" rel="noopener noreferrer" class="text-gray-600 hover:text-gray-900">
-                <Icon class="w-6 h-6" name="mdi:calendar" />
-                <span class="sr-only">Calendly</span>
+              <a
+                href='https://calendly.com/nerandojohnsontech/consults'
+                target='_blank'
+                rel='noopener noreferrer'
+                class='text-gray-600 hover:text-gray-900'>
+                <Icon class='w-6 h-6' name='mdi:calendar' />
+                <span class='sr-only'>Calendly</span>
               </a>
             </li>
             <li>
-              <a href="https://twitter.com/nerajno" target="_blank" rel="noopener noreferrer" class="text-gray-600 hover:text-gray-900">
-                <Icon class="w-6 h-6" name="mdi:twitter" />
-                <span class="sr-only">Twitter</span>
+              <a
+                href='https://twitter.com/nerajno'
+                target='_blank'
+                rel='noopener noreferrer'
+                class='text-gray-600 hover:text-gray-900'>
+                <Icon class='w-6 h-6' name='mdi:twitter' />
+                <span class='sr-only'>Twitter</span>
               </a>
             </li>
           </ul>

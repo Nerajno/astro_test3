@@ -1,70 +1,69 @@
 ---
-// @ts-ignore
-import { Icon } from "astro-icon";
+import { Icon } from 'astro-icon/components'; // @ts-ignore
 
 const features = [
   {
-    title: "Problem Solver",
+    title: 'Problem Solver',
     description:
-      "I am versatile problem solver with extensive full-stack development experience across diverse projects and technologies. My skills range from building complex web platforms to creating award-winning ad technologies, showcasing adaptability in tackling varied challenges. ",
-    icon: "bx:bxs-briefcase",
+      'I am versatile problem solver with extensive full-stack development experience across diverse projects and technologies. My skills range from building complex web platforms to creating award-winning ad technologies, showcasing adaptability in tackling varied challenges. ',
+    icon: 'bx:bxs-briefcase',
   },
   {
-    title: "Tech Community Builder",
+    title: 'Tech Community Builder',
     description:
-      "Beyond growing my technical expertise, I have been committed to mentoring and civic engagement demonstrates a holistic approach to problem-solving in both professional and community contexts. I have had a hand in the Atlanta tech community organizer for the last 5+ years.",
-    icon: "bx:bxs-window-alt",
+      'Beyond growing my technical expertise, I have been committed to mentoring and civic engagement demonstrates a holistic approach to problem-solving in both professional and community contexts. I have had a hand in the Atlanta tech community organizer for the last 5+ years.',
+    icon: 'bx:bxs-window-alt',
   },
   {
-    title: "Tech Speaker",
+    title: 'Tech Speaker',
     description:
-      "I have been a speaker at tech conferences and meetups. I have been granted the opportunity to share and grow my knowledge and skills on various tech conferences and meetups, eg.Vue Conf 2024, ConnectTech 2023 among other events.",
-   icon: "bx:bxs-data",
+      'I have been a speaker at tech conferences and meetups. I have been granted the opportunity to share and grow my knowledge and skills on various tech conferences and meetups, eg.Vue Conf 2024, ConnectTech 2023 among other events.',
+    icon: 'bx:bxs-data',
   },
   {
-    title: "Learner and Facilitator",
+    title: 'Learner and Facilitator',
     description:
-      "Been a product and a result driven learner, simply put I learn best by building. I have been doing this since I came to this craft (mostly). I have also taken time to become a decent knowledge transfer agent with my known tech skillset.",
-    icon: "bx:bxs-bot"
+      'Been a product and a result driven learner, simply put I learn best by building. I have been doing this since I came to this craft (mostly). I have also taken time to become a decent knowledge transfer agent with my known tech skillset.',
+    icon: 'bx:bxs-bot',
   },
   {
-    title: "Tech Consultant",
+    title: 'Tech Consultant',
     description:
-      "Over the past 5 years, I have worked on various tech projects providing solutions to small and medium sized companies, in a range of roles.",
-    icon: "bx:bxs-file-find",
+      'Over the past 5 years, I have worked on various tech projects providing solutions to small and medium sized companies, in a range of roles.',
+    icon: 'bx:bxs-file-find',
   },
   {
-    title: "Tinker",
+    title: 'Tinker',
     description:
-      "Want to figure out the smallest Linux distro that still offers a decent experience? I can help! With sufficient experience in the software development space, I can assist in solving most problems or knowing where to look for help.",
-    icon: "bx:bxs-user",
+      'Want to figure out the smallest Linux distro that still offers a decent experience? I can help! With sufficient experience in the software development space, I can assist in solving most problems or knowing where to look for help.',
+    icon: 'bx:bxs-user',
   },
 ];
 ---
 
-<div class="mt-16 md:mt-0">
-  <h2 class="text-4xl lg:text-5xl font-bold lg:tracking-tight">
+<div class='mt-16 md:mt-0'>
+  <h2 class='text-4xl lg:text-5xl font-bold lg:tracking-tight'>
     Current Craft Characteristics
   </h2>
-  <p class="text-lg mt-4 text-slate-600">
-    Writing code moved from an interest to a passionate hobby to my current career/craft. I am currently working in the front-end space as
-    a junior Vue frontend developer. Here are a few characteristics/things I am working on :
+  <p class='text-lg mt-4 text-slate-600'>
+    Writing code moved from an interest to a passionate hobby to my current
+    career/craft. I am currently working in the front-end space as a junior Vue
+    frontend developer. Here are a few characteristics/things I am working on :
   </p>
 </div>
 
-<div class="grid sm:grid-cols-2 md:grid-cols-3 mt-16 gap-16">
+<div class='grid sm:grid-cols-2 md:grid-cols-3 mt-16 gap-16'>
   {
     features.map((item) => (
-      <div class="flex gap-4 items-start">
-        <div class="mt-1 bg-black rounded-full  p-2 w-8 h-8 shrink-0">
-          <Icon class="text-white" name={item.icon} />
+      <div class='flex gap-4 items-start'>
+        <div class='mt-1 bg-black rounded-full  p-2 w-8 h-8 shrink-0'>
+          <Icon class='text-white' name={item.icon} />
         </div>
         <div>
-          <h3 class="font-semibold text-lg">{item.title}</h3>
-          <p class="text-slate-500 mt-2 leading-relaxed">{item.description}</p>
+          <h3 class='font-semibold text-lg'>{item.title}</h3>
+          <p class='text-slate-500 mt-2 leading-relaxed'>{item.description}</p>
         </div>
       </div>
     ))
   }
 </div>
-
