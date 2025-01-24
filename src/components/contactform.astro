@@ -13,15 +13,14 @@ if (Astro.request.method === "POST") {
     const subject = data.get("subject");
 
     // Add validation logic here
-
     const hasErrors = Object.values(errors).some(msg => msg);
 
     if (!hasErrors) {
       const payload = {
-        name: name,
-        email: email,
+        name: name as string,
+        email: email as string,
         html: JSON.stringify(message),
-        subject: subject,
+        subject: subject as string,
       };
       await sendEmail(payload);
       console.log("Email sent successfully");
