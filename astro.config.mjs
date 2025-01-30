@@ -14,7 +14,8 @@ export default defineConfig({
   integrations: [tailwind(), mdx(), sitemap(), icon(
     {include:{
       bx: ['*'],
-      'simple-icons': ['*']
+      'simple-icons': ['*'],
+      mdi: ['*'],
     },}
   )],
   image: {
