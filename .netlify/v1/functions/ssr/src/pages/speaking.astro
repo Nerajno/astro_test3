@@ -1,0 +1,46 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Container from '../components/container.astro';
+import Sectionhead from '../components/sectionhead.astro';
+import EventList from '../components/eventlist.astro';
+import { speakingData } from '../data/speakingData';
+import type { ProcessedEvent } from '../types';
+
+// Process and sort events
+const now = new Date();
+
+const processedEvents: ProcessedEvent[] = speakingData.map(event => {
+  const eventDate = new Date(event.date);
+  if (isNaN(eventDate.getTime())) {
+    throw new Error(`Invalid date for event: ${event.title}`);
+  }
+
+  return {
+    ...event,
+    status: eventDate > now ? 'upcoming' : 'past'
+  };
+});
+---
+
+<Layout title="Speaking Engagements">
+  <Container>
+    <Sectionhead>
+      <Fragment slot="title">Speaking Engagements</Fragment>
+      <Fragment slot="desc">
+        Join me at upcoming events or explore past presentations
+      </Fragment>
+    </Sectionhead>
+
+    <div class="flex flex-col gap-3 mx-auto max-w-4xl mt-16">
+      <p class="text-lg leading-relaxed text-gray-600">
+        I regularly speak at conferences, workshops, and meetups about web development,
+        developer experience, and building inclusive tech communities. Here you'll find
+        my upcoming speaking engagements and recordings of past events.
+      </p>
+    </div>
+
+    <div class="mx-auto max-w-4xl mt-12">
+      <EventList events={processedEvents} />
+    </div>
+  </Container>
+</Layout>

@@ -1,0 +1,86 @@
+---
+import Layout from "@layouts/Layout.astro";
+import Container from "@components/container.astro";
+import Sectionhead from "@components/sectionhead.astro";
+import PricingCard from "@components/pricingcard.astro";
+import Projectcard from "@components/projectcard.astro";
+
+const projects = [
+  {
+    name: "Project 1",
+    image: {
+      src: "/images/project1.jpg",
+      alt: "Project 1",
+      link: "/",
+    },
+    description: "xyz",
+    tags: ["tag1", "tag2", "tag3"],
+
+    button1: {
+      text: "Github Repo",
+      link: "/",
+    },
+    button2: {
+      text: "Live Version",
+      link: "/",
+    },
+  },
+  {
+    name: "Project 1",
+    image: {
+      src: "/images/project1.jpg",
+      alt: "Project 1",
+      link: "/",
+    },
+    description: "xyz",
+    tags: ["tag1", "tag2", "tag3"],
+
+    button1: {
+      text: "Github Repo",
+      link: "/",
+    },
+    button2: {
+      text: "Live Version",
+      link: "/",
+    },
+  },
+  {
+    name: "Project 2",
+    image: {
+      src: "/images/project2.jpg",
+      alt: "Project 2",
+      link: "/",
+    },
+    description: "xyz",
+    tags: ["tag1", "tag2", "tag3"],
+
+    button1: {
+      text: "Github Repo",
+      link: "/",
+    },
+    button2: {
+      text: "Live Version",
+      link: "/",
+    },
+  },
+
+];
+---
+
+<Layout title="Completed Projects">
+  <Container>
+    <Sectionhead>
+      <Fragment slot="title">Projects</Fragment>
+      <Fragment slot="desc">
+        Projects that I have completed or have had version one done.
+      </Fragment>
+      <!-- <Fragment slot="digital_garden">
+         Here I have written out ideas, current learning stuff and other tinkerings.
+      </Fragment> -->
+    </Sectionhead>
+
+    <!-- < class="grid md:grid-cols-3 gap-10 mx-auto max-w-screen-lg mt-12">
+      {projects.map((project) => <PricingCard project={project} />)} -->
+    </div>
+  </Container>
+</Layout>

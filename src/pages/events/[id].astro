@@ -5,7 +5,7 @@ import Container from '../../components/container.astro';
 import { Image } from 'astro:assets';
 
 export async function getStaticPaths() {
-  return speakingData.map(event => ({
+  return speakingData.map((event) => ({
     params: { id: event.id },
     props: { event },
   }));
@@ -17,34 +17,58 @@ export const prerender = true;
 
 <Layout title={event.title}>
   <Container>
-    <div class="max-w-4xl mx-auto mt-12">
-      <Image
-        src={event.image}
-        alt={event.title}
-        width={800}
-        height={400}
-        class="w-full h-64 object-cover rounded-lg shadow-md"
-      />
-      <h1 class="text-4xl font-bold mt-8 mb-4">{event.title}</h1>
-      <p class="text-gray-600 mb-4">Date: {event.date}</p>
-      <p class="text-gray-600 mb-8">Location: {event.location}</p>
+    <div class='max-w-4xl mx-auto mt-12'>
+      {
+        event.image ? (
+          <Image
+            src={event.image}
+            alt={event.title}
+            width={800}
+            height={400}
+            class='w-full h-64 object-cover rounded-lg shadow-md'
+          />
+        ) : (
+          <div class='w-full h-64 bg-gray-200 rounded-lg shadow-md flex items-center justify-center'>
+            <span class='text-gray-500'>No image available</span>
+          </div>
+        )
+      }
+      <h1 class='text-4xl font-bold mt-8 mb-4'>{event.title}</h1>
+      <p class='text-gray-600 mb-4'>Date: {event.date}</p>
+      <p class='text-gray-600 mb-8'>Location: {event.location}</p>
 
-      <h2 class="text-2xl font-semibold mb-4">Event Description</h2>
-      <p class="text-gray-700 mb-8">{event.description}</p>
+      <h2 class='text-2xl font-semibold mb-4'>Event Description</h2>
+      <p class='text-gray-700 mb-8'>{event.description}</p>
 
-      <h2 class="text-2xl font-semibold mb-4">Additional Resources</h2>
-      <div class="flex gap-4 mb-12">
-        {event.links.video && (
-          <a href={event.links.video} target="_blank" class="bg-blue-500 text-white px-6 py-2 rounded-md hover:bg-blue-600 transition-colors duration-300">Watch Video</a>
-        )}
-        {event.links.article && (
-          <a href={event.links.article} target="_blank" class="bg-gray-200 text-gray-700 px-6 py-2 rounded-md hover:bg-gray-300 transition-colors duration-300">Read Article</a>
-        )}
+      <h2 class='text-2xl font-semibold mb-4'>Additional Resources</h2>
+      <div class='flex gap-4 mb-12'>
+        {
+          event.links.video && (
+            <a
+              href={event.links.video}
+              target='_blank'
+              class='bg-blue-500 text-white px-6 py-2 rounded-md hover:bg-blue-600 transition-colors duration-300'>
+              Watch Video
+            </a>
+          )
+        }
+        {
+          event.links.article && (
+            <a
+              href={event.links.article}
+              target='_blank'
+              class='bg-gray-200 text-gray-700 px-6 py-2 rounded-md hover:bg-gray-300 transition-colors duration-300'>
+              Read Article
+            </a>
+          )
+        }
       </div>
 
       <!-- Back link -->
-      <div class="border-t pt-8">
-        <a href="/speaking" class="text-blue-500 hover:text-blue-700 transition-colors duration-300">
+      <div class='border-t pt-8'>
+        <a
+          href='/speaking'
+          class='text-blue-500 hover:text-blue-700 transition-colors duration-300'>
           ← Back to Speaking Engagements
         </a>
       </div>
