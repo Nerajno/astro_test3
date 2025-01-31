@@ -1,8 +1,8 @@
 ---
-import { SEO } from "astro-seo";
-import Footer from "@components/footer.astro";
-import Navbar from "@components/navbar/navbar.astro";
-import "@fontsource-variable/inter/index.css";
+import { SEO } from 'astro-seo';
+import Footer from '@components/footer.astro';
+import Navbar from '@components/navbar/navbar.astro';
+import '@fontsource-variable/inter/index.css';
 
 export interface Props {
   title: string;
@@ -11,7 +11,7 @@ export interface Props {
 const canonicalURL = new URL(Astro.url.pathname, Astro.site).toString();
 
 const resolvedImageWithDomain = new URL(
-  "/Banner_for_site.png",
+  '/Banner_for_site.png',
   Astro.site
 ).toString();
 
@@ -20,26 +20,27 @@ const { title } = Astro.props;
 const makeTitle = "Nerando's Portfolio";
 ---
 
-<!DOCTYPE html>
-<html lang="en">
+<!doctype html>
+<html lang='en' class='light'>
+  <!-- <html lang="en"> -->
   <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width" />
-    <link rel="icon" type="image/x-icon" href="/my_favicon.ico" />
-    <meta name="generator" content={Astro.generator} />
+    <meta charset='UTF-8' />
+    <meta name='viewport' content='width=device-width' />
+    <link rel='icon' type='image/x-icon' href='/my_favicon.ico' />
+    <meta name='generator' content={Astro.generator} />
 
     <!-- <link rel="preload" as="image" href={src} alt="Hero" /> -->
     <SEO
       title={makeTitle}
-      description="This is a portfolio website of Nerando. It contains his projects, blogs, and other information."
+      description='This is a portfolio website of Nerando. It contains his projects, blogs, and other information.'
       canonical={canonicalURL}
       twitter={{
-        creator: "nerajno",
+        creator: 'nerajno',
       }}
       openGraph={{
         basic: {
           url: canonicalURL,
-          type: "website",
+          type: 'website',
           title: `Nerando's Portfolio`,
           image: resolvedImageWithDomain,
         },
@@ -58,6 +59,25 @@ const makeTitle = "Nerando's Portfolio";
       /* https://css-tricks.com/almanac/properties/c/content-visibility/ */
       img {
         content-visibility: auto;
+      }
+
+      /* Dark mode styles */
+      :root {
+        --color-text: #000000;
+        --color-bg: #ffffff;
+      }
+
+      :root.dark {
+        --color-text: #ffffff;
+        --color-bg: #0f172a;
+      }
+
+      body {
+        color: var(--color-text);
+        background-color: var(--color-bg);
+        transition:
+          color 0.3s ease,
+          background-color 0.3s ease;
       }
     </style>
   </body>
